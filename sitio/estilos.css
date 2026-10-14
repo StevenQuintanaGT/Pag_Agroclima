@@ -229,6 +229,7 @@ main > section { padding: 40px 0 8px; }
   overscroll-behavior-x: contain;
 }
 .capturas li { flex: 0 0 200px; scroll-snap-align: start; }
+.capturas li.ancha { flex-basis: 300px; }
 .capturas figure { margin: 0; }
 .capturas img {
   display: block;
@@ -379,3 +380,6 @@ main > section.proyecto {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Enlace que todavía no tiene destino (la tesis). */
+.boton.pendiente { opacity: .6; pointer-events: none; border-style: dashed; }

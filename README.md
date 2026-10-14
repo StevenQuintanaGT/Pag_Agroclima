@@ -22,4 +22,4 @@ actualizar en `sitio/index.html` la versión y el tamaño (aparecen en la portad
 ## Publicar la tesis
 
 Si la universidad lo permite, subirla al Release como `Tesis-AgroClima-Jalapa.pdf` y, en `sitio/index.html`
-(sección "El proyecto"), cambiar la nota "Tesis: disponible en la Universidad…" por el enlace que está comentado.
+(sección "El proyecto"), poner su dirección en el botón "Leer la tesis (PDF)" siguiendo el comentario `TESIS:`.
