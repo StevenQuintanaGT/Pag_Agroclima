@@ -23,3 +23,11 @@ actualizar en `sitio/index.html` la versión y el tamaño (aparecen en la portad
 
 Si la universidad lo permite, subirla al Release como `Tesis-AgroClima-Jalapa.pdf` y, en `sitio/index.html`
 (sección "El proyecto"), poner su dirección en el botón "Leer la tesis (PDF)" siguiendo el comentario `TESIS:`.
+
+## Otros archivos
+
+- `sitio/404.html`: página para direcciones que no existen (GitHub Pages la usa sola).
+- `sitio/img/compartir.jpg` (1200×630): la imagen que muestran WhatsApp y Facebook al compartir el enlace.
+- `sitio/img/qr.svg`: código QR con la dirección de la página (se muestra en pantallas anchas, para proyectar).
+- Los límites de la sección "Lo que aguanta su cultivo" vienen de `docs/UMBRALES.md` del repositorio de la app;
+  si cambian allá, hay que cambiarlos aquí.
