@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgroClima Jalapa</title>
+<meta name="description" content="Aplicación gratuita para Android: el clima y el pronóstico de su parcela en los 7 municipios de Jalapa, con avisos antes de que pase.">
+<meta name="theme-color" content="#1B5E20">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<!-- Íconos (Material Symbols) que se reutilizan con <use>. -->
+<svg width="0" height="0" class="oculto" aria-hidden="true">
+  <symbol id="i-nube" viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95A5.469 5.469 0 0 1 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11A2.98 2.98 0 0 1 22 15c0 1.65-1.35 3-3 3z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol>
+  <symbol id="i-campana" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></symbol>
+  <symbol id="i-hoja" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></symbol>
+  <symbol id="i-bajar" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></symbol>
+  <symbol id="i-bien" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></symbol>
+  <symbol id="i-cuidado" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+  <symbol id="i-peligro" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></symbol>
+</svg>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="portada">
+  <div class="ancho">
+    <img class="logo" src="img/logo.svg" alt="" width="96" height="96">
+    <h1>AgroClima <span>Jalapa</span></h1>
+    <p class="lema">El clima de su parcela, antes de que pase</p>
+    <a class="boton boton-grande" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">
+      <svg class="icono" aria-hidden="true"><use href="#i-bajar"/></svg>
+      Descargar la app (APK)
+    </a>
+    <p class="ficha">Android 8 o más · 38.9 MB · versión 1.0.0 · gratis</p>
+    <p class="ficha"><a href="#instalar">¿Cómo se instala?</a></p>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <section class="ancho" aria-labelledby="t-hace">
+    <h2 id="t-hace">Qué hace la app</h2>
+    <ul class="bloques">
+      <li class="tarjeta">
+        <svg class="icono-bloque" aria-hidden="true"><use href="#i-pin"/></svg>
+        <h3>Marque sus parcelas en el mapa</h3>
+        <p>Con el dedo en el mapa o con la ubicación del teléfono. Diga qué siembra y cómo va el cultivo.</p>
+      </li>
+      <li class="tarjeta">
+        <svg class="icono-bloque cielo" aria-hidden="true"><use href="#i-nube"/></svg>
+        <h3>El clima de cada parcela</h3>
+        <p>El clima de ahorita y lo que se espera para los próximos 5 días, de su parcela y no solo del municipio.</p>
+      </li>
+      <li class="tarjeta">
+        <svg class="icono-bloque" aria-hidden="true"><use href="#i-campana"/></svg>
+        <h3>Avisos antes de que pase</h3>
+        <p>Si viene más lluvia, calor, frío o viento de lo que aguanta su maíz, frijol, café u hortalizas, le llega un aviso, aunque tenga la app cerrada.</p>
+        <ul class="semaforo">
+          <li class="normal"><svg aria-hidden="true"><use href="#i-bien"/></svg>NORMAL</li>
+          <li class="precaucion"><svg aria-hidden="true"><use href="#i-cuidado"/></svg>PRECAUCIÓN</li>
+          <li class="peligro"><svg aria-hidden="true"><use href="#i-peligro"/></svg>PELIGRO</li>
+        </ul>
+      </li>
+      <li class="tarjeta">
+        <svg class="icono-bloque" aria-hidden="true"><use href="#i-hoja"/></svg>
+        <h3>Historial y reportes</h3>
+        <p>Vea cómo estuvo el clima día por día y guarde o comparta un resumen en PDF, Excel o CSV, o imprímalo.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="ancho" aria-labelledby="t-municipios">
+    <h2 id="t-municipios">Para los 7 municipios de Jalapa</h2>
+    <ul class="municipios">
+      <li>Jalapa</li>
+      <li>San Pedro Pinula</li>
+      <li>San Luis Jilotepeque</li>
+      <li>San Manuel Chaparrón</li>
+      <li>San Carlos Alzatate</li>
+      <li>Monjas</li>
+      <li>Mataquescuintla</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="t-capturas">
+    <div class="ancho">
+      <h2 id="t-capturas">Así se ve</h2>
+      <p class="nota">Diseño de la app. Deslice hacia un lado para ver más.</p>
+    </div>
+    <ul class="capturas" tabindex="0" aria-label="Pantallas de la app">
+      <li><figure><img src="img/panel.webp" width="400" height="886" loading="lazy" decoding="async" alt="Pantalla de inicio: aviso de precaución por viento, 24 grados, soleado, humedad, viento y lluvia de la parcela."><figcaption>El clima de hoy</figcaption></figure></li>
+      <li><figure><img src="img/pronostico.webp" width="400" height="886" loading="lazy" decoding="async" alt="Pronóstico: curva de temperatura y lluvia por horas de los próximos días."><figcaption>Lo que viene</figcaption></figure></li>
+      <li><figure><img src="img/mapa.webp" width="400" height="886" loading="lazy" decoding="async" alt="Mapa con las parcelas marcadas y botones para ver lluvia, nubes, calor y viento."><figcaption>El mapa del clima</figcaption></figure></li>
+      <li><figure><img src="img/aviso.webp" width="400" height="886" loading="lazy" decoding="async" alt="Detalle de un aviso: lo que se espera, lo que aguanta el cultivo y qué puede hacer."><figcaption>Un aviso</figcaption></figure></li>
+      <li><figure><img src="img/reportes.webp" width="400" height="886" loading="lazy" decoding="async" alt="Reportes: días con lluvia, noche más fría, lluvia acumulada y avisos de peligro con gráficas."><figcaption>Reportes</figcaption></figure></li>
+    </ul>
+  </section>
+
+  <section class="ancho" id="instalar" aria-labelledby="t-instalar">
+    <h2 id="t-instalar">Cómo instalarla</h2>
+    <p>La app no está en la Play Store: se instala con un archivo. Es fácil, siga estos pasos.</p>
+    <ol class="pasos">
+      <li>Toque <strong>“Descargar la app”</strong> y espere a que baje el archivo.</li>
+      <li>Ábralo desde <strong>Archivos → Descargas</strong>.</li>
+      <li>Si el teléfono pide permiso para <strong>“instalar apps desconocidas”</strong>, actívelo y vuelva atrás.</li>
+      <li>Toque <strong>Instalar</strong>. Si Play Protect dice que no conoce la app, toque <strong>Más detalles → Instalar de todas formas</strong>. Pasa porque no viene de la Play Store.</li>
+      <li>Abra AgroClima, cree su cuenta y registre su parcela.</li>
+    </ol>
+    <a class="boton" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">
+      <svg class="icono" aria-hidden="true"><use href="#i-bajar"/></svg>
+      Descargar la app (APK)
+    </a>
+    <details class="huella">
+      <summary>Para verificar el archivo (opcional)</summary>
+      <p>Huella SHA-256 del certificado de firma:</p>
+      <code>29:59:45:5F:15:D8:3C:FE:72:32:E3:58:F9:26:35:1C:0D:E7:5E:D2:90:23:6A:A2:18:F5:C6:FC:7D:46:82:5B</code>
+    </details>
+  </section>
+
+  <section class="ancho" aria-labelledby="t-preguntas">
+    <h2 id="t-preguntas">Preguntas comunes</h2>
+    <div class="preguntas">
+      <details>
+        <summary>¿Por qué no me llegan avisos?</summary>
+        <p>Revise que tenga internet y que los avisos estén encendidos en “Mis avisos”. También revise que el teléfono deje a la app mandar avisos.</p>
+      </details>
+      <details>
+        <summary>¿Puedo poner más de una parcela?</summary>
+        <p>Sí. En “Mis parcelas” toque “Agregar parcela”. Cada una tiene su clima y sus avisos.</p>
+      </details>
+      <details>
+        <summary>¿Funciona sin señal?</summary>
+        <p>Sí. Se ve el último clima guardado y la app le dice de qué hora es. Los avisos le llegan cuando vuelva la señal.</p>
+      </details>
+      <details>
+        <summary>¿Los avisos son oficiales?</summary>
+        <p>No. Son información de apoyo calculada con el pronóstico. Siga también lo que digan el INSIVUMEH y CONRED.</p>
+      </details>
+      <details>
+        <summary>¿Qué hago cuando me llega un aviso?</summary>
+        <p>Ábralo: le dice qué puede pasar, cuándo y qué puede hacer para cuidar su cultivo. Cuando haya tomado medidas, toque “Ya tomé medidas”.</p>
+      </details>
+      <details>
+        <summary>¿Cada cuánto se revisa el clima?</summary>
+        <p>Cada 3 horas, aunque tenga la app cerrada. El pronóstico llega hasta 5 días adelante.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta?</summary>
+        <p>Nada. La app es gratuita.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="ancho" aria-labelledby="t-datos">
+    <h2 id="t-datos">¿De dónde salen los datos?</h2>
+    <div class="tarjeta">
+      <p>Del servicio meteorológico <strong>OpenWeather</strong>, para un cuadro de unos 5 km donde está su parcela: no es una medición en su terreno. Los avisos los calcula la app con lo que aguanta cada cultivo.</p>
+      <p>Mapas: Esri. Límites de los municipios: geoBoundaries.</p>
+    </div>
+    <div class="aviso-apoyo" role="note">
+      <svg aria-hidden="true"><use href="#i-cuidado"/></svg>
+      <p><strong>No es un aviso oficial.</strong> Es información de apoyo; para emergencias, siga lo que digan el INSIVUMEH y CONRED.</p>
+    </div>
+  </section>
+
+  <section class="ancho" aria-labelledby="t-privacidad">
+    <h2 id="t-privacidad">Privacidad y términos de uso</h2>
+    <ul class="lista tarjeta">
+      <li>La app es gratuita y es información de apoyo: las decisiones sobre su cultivo son suyas.</li>
+      <li>Guardamos su nombre, correo, teléfono (si lo dio), sus parcelas y los avisos que recibió, solo para darle el clima y los avisos de sus parcelas.</li>
+      <li>No vendemos ni compartimos sus datos con nadie.</li>
+      <li>Su ubicación se usa solo cuando usted pide poner la parcela donde está.</li>
+      <li>Puede eliminar su cuenta cuando quiera en <strong>Ajustes</strong>: se borra todo en unas horas.</li>
+    </ul>
+    <p class="nota">Esta página no usa cookies ni cuenta visitas.</p>
+  </section>
+
+  <section class="proyecto" aria-labelledby="t-proyecto">
+    <div class="ancho">
+      <h2 id="t-proyecto">El proyecto</h2>
+      <p class="titulo-tesis">Aplicación móvil de monitoreo meteorológico y alerta de riesgos climáticos para la producción agrícola en Jalapa</p>
+      <dl class="datos-tesis">
+        <dt>Curso</dt><dd>Proyecto de Graduación II</dd>
+        <dt>Universidad</dt><dd>Universidad Mariano Gálvez de Guatemala</dd>
+        <dt>Autor</dt><dd>Marlon Steven Quintana Recinos</dd>
+      </dl>
+      <p>Aplicación Android para los productores de los 7 municipios de Jalapa. Registra parcelas con su cultivo y etapa, consulta el clima y el pronóstico de cada una y, cada 3 horas, compara el pronóstico de 5 días con los umbrales agrometeorológicos del cultivo para mandar avisos automáticos. Guarda el historial y genera reportes en PDF, Excel o CSV. Funciona sin señal con los últimos datos guardados y opera a costo cero.</p>
+      <p class="tecnologias"><strong>Tecnologías:</strong> Flutter, Firebase (plan gratuito), OpenWeather, GitHub Actions, flutter_map + Esri.</p>
+      <div class="enlaces">
+        <!-- Cuando la tesis sea pública, cambiar este bloque por:
+        <a class="boton boton-claro" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/Tesis-AgroClima-Jalapa.pdf">Leer la tesis (PDF)</a> -->
+        <p class="nota">Tesis: disponible en la Universidad Mariano Gálvez de Guatemala.</p>
+        <a class="boton boton-claro" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa">Ver el repositorio en GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="ancho">
+    <p><strong>AgroClima Jalapa</strong> · versión 1.0.0 · 2026</p>
+    <p>Proyecto académico sin fines de lucro.</p>
+    <p>Datos del clima: OpenWeather. Mapas: Esri. Límites: geoBoundaries.</p>
+  </div>
+</footer>
+
+</body>
+</html>
