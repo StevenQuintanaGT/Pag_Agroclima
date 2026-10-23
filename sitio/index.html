@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AgroClima Jalapa</title>
 <meta name="description" content="App gratuita para Android: el clima de su parcela y un aviso cuando el pronóstico pasa lo que aguanta su maíz, frijol, café u hortalizas. Para los 7 municipios de Jalapa.">
-<meta name="theme-color" content="#1B5E20">
+<meta name="theme-color" content="#0E3414">
 <link rel="icon" href="img/logo.svg" type="image/svg+xml">
 <link rel="canonical" href="https://stevenquintanagt.github.io/Pag_Agroclima/">
 <meta property="og:type" content="website">
@@ -25,82 +25,141 @@
 </head>
 <body>
 
+<!-- Íconos (Material Symbols) reutilizados con <use> -->
+<svg width="0" height="0" class="oculto" aria-hidden="true">
+  <symbol id="i-bajar" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></symbol>
+  <symbol id="i-nube" viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></symbol>
+  <symbol id="i-campana" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></symbol>
+  <symbol id="i-hoja" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></symbol>
+  <symbol id="i-codigo" viewBox="0 0 24 24"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></symbol>
+  <symbol id="i-escuela" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/></symbol>
+  <symbol id="i-compartir" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></symbol>
+  <symbol id="i-bien" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></symbol>
+  <symbol id="i-cuidado" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+  <symbol id="i-peligro" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></symbol>
+</svg>
+
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 
-<header class="barra wrap">
-  <a class="marca" href="#">
-    <img src="img/logo.svg" alt="" width="32" height="32">
-    <span>AgroClima Jalapa</span>
-  </a>
-  <nav class="barra-enlaces" aria-label="Principal">
-    <a class="link" href="#cultivos">Cultivos</a>
-    <a class="link" href="#instalar">Instalar</a>
-    <a class="link" href="#preguntas">Preguntas</a>
-    <a class="link" href="#proyecto">Proyecto</a>
-  </nav>
-  <a class="button button-chico" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">Descargar</a>
+<header class="barra">
+  <div class="ancho barra-dentro">
+    <a class="marca" href="#">
+      <img src="img/logo.svg" alt="" width="36" height="36">
+      <span>AgroClima <b>Jalapa</b></span>
+    </a>
+    <nav class="barra-enlaces" aria-label="Principal">
+      <a href="#cultivos">Cultivos</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#instalar">Instalar</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#proyecto">Proyecto</a>
+    </nav>
+    <a class="boton boton-chico" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">
+      <svg class="icono" aria-hidden="true"><use href="#i-bajar"/></svg>Descargar
+    </a>
+  </div>
 </header>
 
 <main id="contenido">
 
-  <!-- ===== Portada: la frase partida por el marco (pliego §6) ===== -->
+  <!-- ===================== Portada ===================== -->
   <section class="hero" aria-labelledby="t-hero">
-    <div class="hero-escena">
+    <div class="ancho hero-grid">
       <h1 id="t-hero" class="hero-frase">
         <span class="mitad mitad-1">El clima de<br class="br-ancho"> su parcela,</span>
         <span class="mitad mitad-2">antes de<br class="br-ancho"> que pase.</span>
       </h1>
 
-      <div class="carrete" role="group" aria-label="Pantallas reales de la app">
-        <div class="carrete-cinta">
-          <figure class="cuadro"><img src="img/panel.webp" width="640" height="1289" alt="Pantalla de inicio de la parcela casa, en Monjas: 26 grados con lluvia, humedad 76 %, viento 3 km/h y 89 % de probabilidad de lluvia." fetchpriority="high"></figure>
-          <figure class="cuadro"><img src="img/avisos.webp" width="640" height="1289" alt="Avisos activos: PELIGRO, puede caer helada mañana en la madrugada; PRECAUCIÓN, lluvia fuerte el viernes." loading="lazy" decoding="async"></figure>
-          <figure class="cuadro"><img src="img/mapa.webp" width="640" height="1289" alt="Mapa del clima con las parcelas casa y chilamatal cerca de Monjas, y botones de lluvia, nubes y calor." loading="lazy" decoding="async"></figure>
-          <figure class="cuadro"><img src="img/reportes.webp" width="640" height="1289" alt="Resumen de 7 días de la parcela chilamatal: un día con lluvia, 19 °C la noche más fría, 5 mm en total y ningún aviso de peligro." loading="lazy" decoding="async"></figure>
+      <div class="hero-telefono">
+        <div class="halo" aria-hidden="true"></div>
+        <div class="telefono">
+          <div class="pantallas" id="pantallas" role="group" aria-label="Pantallas reales de la app">
+            <img class="pantalla es-activa" src="img/panel.webp" width="640" height="1289" alt="Pantalla de inicio de la parcela casa, en Monjas: 26 grados con lluvia, humedad 76 %, viento 3 km/h y 89 % de probabilidad de lluvia." fetchpriority="high">
+            <img class="pantalla" src="img/avisos.webp" width="640" height="1289" alt="Avisos activos: PELIGRO, puede caer helada mañana en la madrugada; PRECAUCIÓN, lluvia fuerte el viernes." loading="lazy" decoding="async">
+            <img class="pantalla" src="img/mapa.webp" width="640" height="1289" alt="Mapa del clima con las parcelas casa y chilamatal cerca de Monjas, y botones de lluvia, nubes y calor." loading="lazy" decoding="async">
+            <img class="pantalla" src="img/reportes.webp" width="640" height="1289" alt="Resumen de 7 días de la parcela chilamatal: un día con lluvia, 19 °C la noche más fría, 5 mm en total y ningún aviso de peligro." loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="flota flota-aviso" aria-hidden="true">
+          <img src="img/logo.svg" alt="" width="34" height="34">
+          <div><p class="flota-app">AgroClima Jalapa · ahora</p><p class="flota-titulo"><span class="txt-peligro">PELIGRO</span>: puede caer helada en La Joya</p><p class="flota-cuerpo">Mañana en la madrugada puede bajar a -1 °C.</p></div>
+        </div>
+        <div class="flota flota-dato" aria-hidden="true">
+          <svg aria-hidden="true"><use href="#i-pin"/></svg><span><b>Monjas</b> 971 msnm</span>
+        </div>
+        <div class="selector" id="selector" role="tablist" aria-label="Cambiar de pantalla">
+          <button type="button" role="tab" aria-selected="true" data-i="0">Inicio</button>
+          <button type="button" role="tab" aria-selected="false" data-i="1">Avisos</button>
+          <button type="button" role="tab" aria-selected="false" data-i="2">Mapa</button>
+          <button type="button" role="tab" aria-selected="false" data-i="3">Resumen</button>
         </div>
       </div>
 
       <div class="hero-pie">
-        <p>AgroClima Jalapa es una app gratis para Android. Le avisa cuando el pronóstico de su parcela pasa lo que aguanta su maíz, frijol, café u hortalizas.</p>
-        <p class="hero-accion">
-          <a class="button" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">Descargar la app</a>
-          <span class="small">Android 8 o más. Pesa 38.9&nbsp;MB.</span>
-        </p>
+        <p class="hero-texto">AgroClima Jalapa es una app gratis para Android. Le avisa cuando el pronóstico de su parcela pasa lo que aguanta su maíz, frijol, café u hortalizas.</p>
+        <div class="hero-acciones">
+          <a class="boton" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">
+            <svg class="icono" aria-hidden="true"><use href="#i-bajar"/></svg>Descargar la app
+          </a>
+          <a class="boton boton-suave" href="#cultivos">Pruebe un aviso<svg class="icono" aria-hidden="true"><use href="#i-flecha"/></svg></a>
+        </div>
       </div>
+
+      <ul class="hero-ficha">
+        <li><b>Gratis</b> no pide tarjeta</li>
+        <li><b>Android 8</b> o más</li>
+        <li><b>38.9 MB</b> versión 1.0.0</li>
+      </ul>
     </div>
   </section>
 
-  <!-- ===== Cultivos: salida fija, controles vivos (pliego §7.1). La cosa viva. ===== -->
+  <!-- ===================== Cifras ===================== -->
+  <section class="cifras" aria-label="En pocas palabras">
+    <ul class="ancho cifras-lista">
+      <li><strong>7</strong><span>municipios de Jalapa</span></li>
+      <li><strong>5</strong><span>días de pronóstico por parcela</span></li>
+      <li><strong>3 h</strong><span>entre cada revisión, aunque la app esté cerrada</span></li>
+      <li><strong>4</strong><span>cultivos: maíz, frijol, café y hortalizas</span></li>
+    </ul>
+  </section>
+
+  <!-- ===================== Simulador ===================== -->
   <section class="simulador" id="cultivos" aria-labelledby="t-cultivos">
-    <div class="sim-campo">
-      <div class="sim-salida" data-ui aria-live="polite">
-        <p class="sim-reloj">Mañana, 6:00 a.m.</p>
-        <ul class="notis" id="sim-notis">
-          <li class="noti">
-            <img src="img/logo.svg" alt="" width="36" height="36">
-            <div>
-              <p class="noti-app">AgroClima Jalapa · ahora</p>
-              <p class="noti-titulo">PELIGRO: mucho calor en El Guayabal</p>
-              <p class="noti-cuerpo">Mañana se esperan 36 °C. Riegue si puede.</p>
-            </div>
-          </li>
-        </ul>
-        <div class="sim-detalle" id="sim-detalle">
-          <p class="chip chip-peligro" id="sim-chip">PELIGRO</p>
-          <p class="sim-que">Qué hacer</p>
-          <p id="sim-medida">Riegue si puede, sobre todo si el maíz está floreando: el calor fuerte seca el polen.</p>
+    <div class="ancho sim-grid">
+      <div class="sim-cabeza">
+        <p class="etiqueta">Pruébelo aquí</p>
+        <h2 id="t-cultivos">Lo que aguanta su cultivo</h2>
+        <p class="sim-intro">Mueva el pronóstico y vea el aviso que le llegaría. Son los mismos límites y las mismas palabras que usa la app.</p>
+      </div>
+
+      <div class="sim-salida-col">
+        <div class="pantalla-bloqueo" aria-live="polite">
+          <p class="bloqueo-hora">6:00</p>
+          <p class="bloqueo-fecha">Mañana</p>
+          <ul class="notis" id="sim-notis">
+            <li class="noti">
+              <img src="img/logo.svg" alt="" width="36" height="36">
+              <div>
+                <p class="noti-app">AgroClima Jalapa · ahora</p>
+                <p class="noti-titulo">PELIGRO: mucho calor en El Guayabal</p>
+                <p class="noti-cuerpo">Mañana se esperan 36 °C. Riegue si puede.</p>
+              </div>
+            </li>
+          </ul>
+          <div class="sim-detalle" id="sim-detalle">
+            <p class="chip chip-peligro" id="sim-chip"><svg aria-hidden="true"><use href="#i-peligro"/></svg><span>PELIGRO</span></p>
+            <p class="sim-que">Qué hacer</p>
+            <p id="sim-medida">Riegue si puede, sobre todo si el maíz está floreando: el calor fuerte seca el polen.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="sim-columna">
-      <h2 id="t-cultivos" class="head">Lo que aguanta su cultivo</h2>
-      <p class="sim-intro">Mueva el pronóstico y vea el aviso que le llegaría. Son los mismos límites y las mismas palabras que usa la app.</p>
-
-      <div class="sim-bloques" id="sim" role="group" aria-label="Pronóstico de prueba">
-        <div class="bloque">
-          <p class="lead">Dígale qué siembra y cómo va.</p>
-          <p>Cada cultivo y cada etapa tienen sus propios límites. Póngale el nombre que usted le da a su parcela.</p>
+      <div class="sim-controles" id="sim" role="group" aria-label="Pronóstico de prueba">
+        <div class="control">
+          <p class="control-titulo">Su parcela</p>
           <fieldset class="segmentos">
             <legend>¿Qué siembra ahí?</legend>
             <label><input type="radio" name="cultivo" value="maiz" checked><span>Maíz</span></label>
@@ -116,46 +175,40 @@
             <label><input type="radio" name="etapa" value="llenado"><span>Llenando el grano</span></label>
             <label><input type="radio" name="etapa" value="cosecha"><span>Cosecha</span></label>
           </fieldset>
-          <label class="campo-texto">Nombre de la parcela
+          <label class="campo-texto"><span>Nombre de la parcela</span>
             <input type="text" name="parcela" value="El Guayabal" maxlength="24">
           </label>
         </div>
 
-        <div class="bloque">
-          <p class="lead">Una noche fría puede quemar la hoja.</p>
-          <p>Con 0&nbsp;°C o menos le avisamos PELIGRO por helada en cualquier cultivo. El café avisa desde 15&nbsp;°C y el frijol desde 18&nbsp;°C.</p>
-          <div class="deslizador"><label for="r-tmin">La noche más fría</label> <output id="o-tmin" for="r-tmin">14 °C</output>
+        <div class="control">
+          <p class="control-titulo">El pronóstico de mañana</p>
+          <div class="deslizador">
+            <label for="r-tmin">La noche más fría</label> <output id="o-tmin" for="r-tmin">14 °C</output>
             <input id="r-tmin" type="range" name="tmin" min="-3" max="25" step="1" value="14">
+            <p class="ayuda">Con 0 °C o menos: helada en cualquier cultivo. El café avisa desde 15 °C y el frijol desde 18 °C.</p>
           </div>
-        </div>
-
-        <div class="bloque">
-          <p class="lead">El calor fuerte bota la flor.</p>
-          <p>El frijol aguanta hasta 28&nbsp;°C y el café hasta 30&nbsp;°C; tres días seguidos ya es PELIGRO. El maíz aguanta hasta 35&nbsp;°C, y si está floreando o llenando el grano ya es PELIGRO.</p>
-          <div class="deslizador"><label for="r-tmax">El día más caliente</label> <output id="o-tmax" for="r-tmax">36 °C</output>
+          <div class="deslizador">
+            <label for="r-tmax">El día más caliente</label> <output id="o-tmax" for="r-tmax">36 °C</output>
             <input id="r-tmax" type="range" name="tmax" min="20" max="42" step="1" value="36">
+            <fieldset class="segmentos segmentos-chicos">
+              <legend>¿Por cuántos días?</legend>
+              <label><input type="radio" name="dias" value="1" checked><span>Un día</span></label>
+              <label><input type="radio" name="dias" value="3"><span>Tres días seguidos</span></label>
+            </fieldset>
           </div>
-          <fieldset class="segmentos">
-            <legend>¿Por cuántos días?</legend>
-            <label><input type="radio" name="dias" value="1" checked><span>Un día</span></label>
-            <label><input type="radio" name="dias" value="3"><span>Tres días seguidos</span></label>
-          </fieldset>
-        </div>
-
-        <div class="bloque">
-          <p class="lead">Un aguacero de una hora encharca.</p>
-          <p>Diez milímetros mojan un dedo de tierra. Con más de 15&nbsp;mm en una hora le avisamos PRECAUCIÓN, y con más de 30&nbsp;mm, PELIGRO.</p>
-          <div class="deslizador"><label for="r-lluvia">Lluvia en una hora</label> <output id="o-lluvia" for="r-lluvia">5 mm</output>
+          <div class="deslizador">
+            <label for="r-lluvia">Lluvia en una hora</label> <output id="o-lluvia" for="r-lluvia">5 mm</output>
             <input id="r-lluvia" type="range" name="lluvia" min="0" max="50" step="1" value="5">
+            <p class="ayuda">Diez milímetros mojan un dedo de tierra.</p>
           </div>
-        </div>
-
-        <div class="bloque">
-          <p class="lead">Con viento, el producto se pierde.</p>
-          <p>Con más de 15&nbsp;km/h no conviene fumigar: le avisamos PRECAUCIÓN. Con más de 30&nbsp;km/h, PELIGRO.</p>
-          <div class="deslizador"><label for="r-viento">Viento</label> <output id="o-viento" for="r-viento">10 km/h</output>
+          <div class="deslizador">
+            <label for="r-viento">Viento</label> <output id="o-viento" for="r-viento">10 km/h</output>
             <input id="r-viento" type="range" name="viento" min="0" max="50" step="1" value="10">
+            <p class="ayuda">Con más de 15 km/h no conviene fumigar.</p>
           </div>
+          <ul class="leyenda">
+            <li class="l-normal">Tranquilo</li><li class="l-precaucion">Precaución</li><li class="l-peligro">Peligro</li>
+          </ul>
         </div>
       </div>
 
@@ -179,263 +232,318 @@
               <tr><th scope="row">Mucha humedad</th><td>Café</td><td>más de 85 %</td><td>—</td></tr>
             </tbody>
           </table>
-          <p class="small">Fuentes citadas en la tesis: Monjo (2010), Moraga (2024), Fuentes López (2002), González (2021), Bardales Espinoza et al. (2019) y MARN El Salvador. Hortalizas usa los límites de todos los cultivos.</p>
+          <p class="fuentes">Fuentes citadas en la tesis: Monjo (2010), Moraga (2024), Fuentes López (2002), González (2021), Bardales Espinoza et al. (2019) y MARN El Salvador. Hortalizas usa los límites de todos los cultivos.</p>
         </div>
       </details>
     </div>
   </section>
 
-  <!-- ===== Cómo le llega un aviso: llamada y respuesta (pliego §7.2) ===== -->
-  <section class="como wrap" id="como" aria-labelledby="t-como">
-    <div class="como-columna">
-      <h2 id="t-como" class="head-2">Cómo le llega un aviso</h2>
+  <!-- ===================== Cómo funciona ===================== -->
+  <section class="seccion" id="como" aria-labelledby="t-como">
+    <div class="ancho">
+      <div class="cabeza">
+        <p class="etiqueta">Cómo funciona</p>
+        <h2 id="t-como">Trabaja por usted, aunque no abra la app</h2>
+      </div>
+      <ol class="pasos3">
+        <li class="paso3 revelar">
+          <p class="paso3-num">1</p>
+          <h3>Marque su parcela una sola vez</h3>
+          <p>En el mapa o con la ubicación del teléfono. Diga qué siembra y cómo va.</p>
+          <div class="mini mini-form">
+            <p><span>Nombre</span><b>El Guayabal</b></p>
+            <p><span>Municipio</span><b>Jalapa</b></p>
+            <p><span>¿Qué siembra ahí?</span><b>Maíz</b></p>
+            <p><span>¿Cómo va el cultivo?</span><b>Floreando</b></p>
+          </div>
+        </li>
+        <li class="paso3 revelar">
+          <p class="paso3-num">2</p>
+          <h3>Cada 3 horas revisa el pronóstico</h3>
+          <p>De día y de noche, los 5 días que vienen, aunque tenga el teléfono guardado.</p>
+          <div class="mini mini-reloj">
+            <svg viewBox="0 0 120 120" class="reloj" aria-hidden="true">
+              <circle cx="60" cy="60" r="46" class="reloj-aro"/>
+              <g class="reloj-marcas">
+                <circle cx="60" cy="14" r="5"/><circle cx="92.5" cy="27.5" r="5"/><circle cx="106" cy="60" r="5" class="ahora"/><circle cx="92.5" cy="92.5" r="5"/>
+                <circle cx="60" cy="106" r="5"/><circle cx="27.5" cy="92.5" r="5"/><circle cx="14" cy="60" r="5"/><circle cx="27.5" cy="27.5" r="5"/>
+              </g>
+              <line x1="60" y1="60" x2="60" y2="24" class="reloj-aguja"/>
+            </svg>
+            <p><b>8 revisiones</b> al día: 12, 3, 6 y 9, de mañana y de noche.</p>
+          </div>
+        </li>
+        <li class="paso3 revelar">
+          <p class="paso3-num">3</p>
+          <h3>Si viene algo, le avisa</h3>
+          <p>Le llega una notificación con la palabra del semáforo, qué va a pasar, cuándo y qué hacer.</p>
+          <figure class="mini mini-foto">
+            <img src="img/notificacion.webp" width="760" height="581" loading="lazy" decoding="async" alt="Dos avisos reales en la barra de un teléfono: PRECAUCIÓN, lluvia fuerte en casa, el viernes hasta 22 mm de lluvia por hora; PELIGRO, puede caer helada en casa, mañana en la madrugada puede bajar a -1 °C.">
+          </figure>
+        </li>
+      </ol>
+      <ul class="semaforo">
+        <li class="s-normal"><svg aria-hidden="true"><use href="#i-bien"/></svg><b>NORMAL</b> todo tranquilo</li>
+        <li class="s-precaucion"><svg aria-hidden="true"><use href="#i-cuidado"/></svg><b>PRECAUCIÓN</b> esté pendiente</li>
+        <li class="s-peligro"><svg aria-hidden="true"><use href="#i-peligro"/></svg><b>PELIGRO</b> actúe ya</li>
+      </ul>
+    </div>
+  </section>
 
-      <div class="intercambio">
-        <p class="paso" data-reveal>Primero, marque su parcela una sola vez.</p>
-        <div class="llamada" data-ui data-reveal>
-          <dl class="formulario">
-            <div><dt>Nombre</dt><dd>El Guayabal</dd></div>
-            <div><dt>Municipio</dt><dd>Jalapa</dd></div>
-            <div><dt>¿Qué siembra ahí?</dt><dd>Maíz</dd></div>
-            <div><dt>¿Cómo va el cultivo?</dt><dd>Floreando</dd></div>
-          </dl>
+  <!-- ===================== Mis avisos ===================== -->
+  <section class="seccion mis-avisos" id="mis-avisos" aria-labelledby="t-mis-avisos">
+    <div class="ancho mis-grid">
+      <div class="mis-texto">
+        <p class="etiqueta">Mis avisos</p>
+        <h2 id="t-mis-avisos">Usted decide qué le suena</h2>
+        <p>En la pantalla Mis avisos apaga lo que no le sirve y elige desde qué nivel quiere que le suene el teléfono. Lo que no suena igual queda guardado en Alertas.</p>
+        <ul class="puntos">
+          <li>De 10:00 p.m. a 5:00 a.m. no suena, si usted quiere.</li>
+          <li>Los avisos de PELIGRO suenan siempre, aunque sea de noche.</li>
+          <li>Toque los interruptores de la derecha para ver cómo cambia.</li>
+        </ul>
+        <a class="enlace" href="manuales/manual-de-usuario.pdf" type="application/pdf">Vea Mis avisos en el manual de usuario</a>
+      </div>
+
+      <div class="panel">
+        <div class="panel-demo">
+          <p class="panel-titulo">Esta semana en El Guayabal</p>
+          <ul class="semana" id="semana">
+            <li data-tipo="temperaturaBaja" data-nivel="3" data-hora="3"><span class="chip chip-peligro"><svg aria-hidden="true"><use href="#i-peligro"/></svg><span>PELIGRO</span></span><span class="semana-texto"><b>Puede caer helada</b> Jueves, 3:00 a.m.</span><span class="destino">Suena</span></li>
+            <li data-tipo="lluviaIntensa" data-nivel="2" data-hora="15"><span class="chip chip-precaucion"><svg aria-hidden="true"><use href="#i-cuidado"/></svg><span>PRECAUCIÓN</span></span><span class="semana-texto"><b>Lluvia fuerte</b> Viernes, 3:00 p.m.</span><span class="destino">Suena</span></li>
+            <li data-tipo="vientoFuerte" data-nivel="2" data-hora="0"><span class="chip chip-precaucion"><svg aria-hidden="true"><use href="#i-cuidado"/></svg><span>PRECAUCIÓN</span></span><span class="semana-texto"><b>Viento fuerte</b> Sábado, 12:00 a.m.</span><span class="destino destino-no">Queda en Alertas</span></li>
+            <li data-tipo="temperaturaAlta" data-nivel="3" data-hora="12"><span class="chip chip-peligro"><svg aria-hidden="true"><use href="#i-peligro"/></svg><span>PELIGRO</span></span><span class="semana-texto"><b>Mucho calor</b> Mañana, 12:00 p.m.</span><span class="destino">Suena</span></li>
+            <li data-tipo="sequia" data-nivel="1" data-hora="9"><span class="chip chip-normal"><svg aria-hidden="true"><use href="#i-bien"/></svg><span>NORMAL</span></span><span class="semana-texto"><b>Días sin lluvia</b> Domingo, 9:00 a.m.</span><span class="destino destino-no">Queda en Alertas</span></li>
+          </ul>
+          <p class="panel-cuenta" id="cuenta" aria-live="polite">Le suenan 3 de 5 avisos.</p>
         </div>
-        <div class="respuesta" data-ui data-reveal>
-          <div class="parcela">
-            <div>
-              <p class="parcela-nombre">El Guayabal</p>
-              <p class="parcela-dato">Jalapa, 1,380 msnm. Maíz, floreando.</p>
-            </div>
-            <p class="parcela-temp">24°</p>
-            <p class="chip chip-normal">NORMAL</p>
+        <div class="panel-controles" id="prefs" role="group" aria-label="Mis avisos">
+          <p class="panel-titulo">Mis avisos</p>
+          <label class="fila"><span>Frío y helada</span><input type="checkbox" role="switch" name="temperaturaBaja" checked></label>
+          <label class="fila"><span>Lluvia fuerte</span><input type="checkbox" role="switch" name="lluviaIntensa" checked></label>
+          <label class="fila"><span>Viento fuerte</span><input type="checkbox" role="switch" name="vientoFuerte" checked></label>
+          <label class="fila"><span>Mucho calor</span><input type="checkbox" role="switch" name="temperaturaAlta" checked></label>
+          <label class="fila"><span>Días sin lluvia</span><input type="checkbox" role="switch" name="sequia" checked></label>
+          <label class="fila"><span>Mucha humedad</span><input type="checkbox" role="switch" name="humedadAlta" checked></label>
+          <label class="fila"><span>Avisarme desde</span>
+            <select name="minimo">
+              <option value="1">Todo</option>
+              <option value="2" selected>Precaución</option>
+              <option value="3">Solo peligro</option>
+            </select>
+          </label>
+          <label class="fila"><span>No sonar de noche <small>De 10:00 p.m. a 5:00 a.m.</small></span><input type="checkbox" role="switch" name="noche" checked></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Instalar y manuales ===================== -->
+  <section class="seccion" id="instalar" aria-labelledby="t-instalar">
+    <div class="ancho">
+      <div class="cabeza">
+        <p class="etiqueta">Instalación</p>
+        <h2 id="t-instalar">Instálela en cinco pasos</h2>
+        <p>La app no está en la Play Store: se instala con un archivo. Es fácil y toma un par de minutos.</p>
+      </div>
+      <div class="instalar-grid">
+        <ol class="pasos">
+          <li class="revelar"><h3>Descargue</h3><p>Toque <b>“Descargar la app”</b> y espere a que baje el archivo (38.9 MB).</p></li>
+          <li class="revelar"><h3>Ábralo</h3><p>Búsquelo en <b>Archivos</b>, en la carpeta <b>Descargas</b>, y tóquelo.</p></li>
+          <li class="revelar"><h3>Dé permiso</h3><p>Si el teléfono pide permiso para <b>“instalar apps desconocidas”</b>, actívelo y vuelva atrás. Es una sola vez.</p></li>
+          <li class="revelar"><h3>Instale</h3><p>Toque <b>Instalar</b>. Si Play Protect dice que no conoce la app, toque <b>Más detalles</b> y luego <b>Instalar de todas formas</b>. Pasa porque no viene de la Play Store.</p></li>
+          <li class="revelar"><h3>Listo</h3><p>Abra AgroClima, cree su cuenta y registre su parcela.</p></li>
+        </ol>
+
+        <div class="instalar-lado">
+          <div class="descarga">
+            <img src="img/logo.svg" alt="" width="64" height="64" loading="lazy">
+            <p class="descarga-titulo">AgroClima Jalapa 1.0.0</p>
+            <p class="descarga-dato">Android 8 o más · 38.9 MB · gratis</p>
+            <a class="boton boton-lima" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">
+              <svg class="icono" aria-hidden="true"><use href="#i-bajar"/></svg>Descargar la app
+            </a>
+            <details class="huella">
+              <summary>Para verificar el archivo</summary>
+              <p>Huella SHA-256 del certificado de firma:</p>
+              <code>29:59:45:5F:15:D8:3C:FE:72:32:E3:58:F9:26:35:1C:0D:E7:5E:D2:90:23:6A:A2:18:F5:C6:FC:7D:46:82:5B</code>
+            </details>
+          </div>
+
+          <p class="manuales-titulo" id="manuales">Manuales en PDF</p>
+          <ul class="manuales">
+            <li><a class="manual" href="manuales/manual-de-instalacion.pdf" type="application/pdf">
+              <span class="manual-icono"><svg aria-hidden="true"><use href="#i-hoja"/></svg></span>
+              <span class="manual-texto"><b>Manual de instalación</b><span>Paso a paso con imágenes. 14 págs., 0.9 MB</span></span>
+              <svg class="manual-flecha" aria-hidden="true"><use href="#i-bajar"/></svg>
+            </a></li>
+            <li><a class="manual" href="manuales/manual-de-usuario.pdf" type="application/pdf">
+              <span class="manual-icono"><svg aria-hidden="true"><use href="#i-hoja"/></svg></span>
+              <span class="manual-texto"><b>Manual de usuario</b><span>Cuenta, parcelas, clima, avisos y reportes. 25 págs., 2.9 MB</span></span>
+              <svg class="manual-flecha" aria-hidden="true"><use href="#i-bajar"/></svg>
+            </a></li>
+            <li><a class="manual" href="manuales/manual-tecnico.pdf" type="application/pdf">
+              <span class="manual-icono manual-icono-oscuro"><svg aria-hidden="true"><use href="#i-codigo"/></svg></span>
+              <span class="manual-texto"><b>Manual técnico</b><span>Para desarrolladores y el jurado. 27 págs., 2.0 MB</span></span>
+              <svg class="manual-flecha" aria-hidden="true"><use href="#i-bajar"/></svg>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Preguntas ===================== -->
+  <section class="seccion preguntas-sec" id="preguntas" aria-labelledby="t-preguntas">
+    <div class="ancho preguntas-grid">
+      <div class="preguntas-cabeza">
+        <p class="etiqueta">Ayuda</p>
+        <h2 id="t-preguntas">Preguntas comunes</h2>
+        <p>Las mismas respuestas que encuentra en la app, en Perfil → Ayuda.</p>
+        <div class="aviso-apoyo">
+          <svg aria-hidden="true"><use href="#i-cuidado"/></svg>
+          <p><b>No es un aviso oficial.</b> Es información de apoyo; para emergencias, siga lo que digan el INSIVUMEH y CONRED.</p>
+        </div>
+      </div>
+      <div class="acordeon">
+        <details name="pregunta">
+          <summary>¿Por qué no me llegan avisos?</summary>
+          <p>Revise que tenga internet y que los avisos estén encendidos en “Mis avisos”. También revise que el teléfono deje a la app mandar avisos.</p>
+        </details>
+        <details name="pregunta">
+          <summary>¿Puedo poner más de una parcela?</summary>
+          <p>Sí. En “Mis parcelas” toque “Agregar parcela”. Cada una tiene su clima y sus avisos.</p>
+        </details>
+        <details name="pregunta">
+          <summary>¿Funciona sin señal?</summary>
+          <p>Sí. Se ve el último clima guardado y la app le dice de qué hora es. Los avisos le llegan cuando vuelva la señal.</p>
+        </details>
+        <details name="pregunta">
+          <summary>¿Los avisos son oficiales?</summary>
+          <p>No. Son información de apoyo calculada con el pronóstico. Para emergencias, siga lo que digan el INSIVUMEH y CONRED.</p>
+        </details>
+        <details name="pregunta">
+          <summary>¿Qué hago cuando me llega un aviso?</summary>
+          <p>Ábralo: le dice qué puede pasar, cuándo y qué puede hacer para cuidar su cultivo. Cuando haya tomado medidas, toque “Ya tomé medidas”.</p>
+        </details>
+        <details name="pregunta">
+          <summary>¿De dónde sale el pronóstico?</summary>
+          <p>Del servicio meteorológico OpenWeather, para un cuadro de unos 5&nbsp;km donde está su parcela: no es una medición en su terreno. Se revisa cada 3 horas y llega hasta 5 días adelante. Los mapas son de Esri y los límites de los municipios, de geoBoundaries.</p>
+        </details>
+        <details name="pregunta">
+          <summary>¿Qué hacen con mis datos?</summary>
+          <ul>
+            <li>Guardamos su nombre, correo, teléfono (si lo dio), sus parcelas y los avisos que recibió, solo para darle el clima y los avisos de sus parcelas.</li>
+            <li>No vendemos ni compartimos sus datos con nadie.</li>
+            <li>Su ubicación se usa solo cuando usted pide poner la parcela donde está.</li>
+            <li>Puede eliminar su cuenta cuando quiera en Ajustes: se borra todo en unas horas.</li>
+            <li>La app es gratuita y es información de apoyo: las decisiones sobre su cultivo son suyas.</li>
+          </ul>
+        </details>
+        <details name="pregunta">
+          <summary>¿Qué quieren decir las palabras de la app?</summary>
+          <dl class="glosario">
+            <div><dt>Helada</dt><dd>Cuando el frío quema la hoja de noche.</dd></div>
+            <div><dt>Canícula</dt><dd>Los días secos de julio en plena lluvia.</dd></div>
+            <div><dt>Humedad</dt><dd>Cuánta agua trae el aire.</dd></div>
+            <div><dt>Milímetro</dt><dd>10 mm moja un dedo de tierra.</dd></div>
+            <div><dt>Días sin lluvia</dt><dd>Varios días seguidos sin que llueva.</dd></div>
+            <div><dt>Viento fuerte</dt><dd>El que puede tumbar la milpa.</dd></div>
+            <div><dt>Pronóstico</dt><dd>Lo que se espera que pase.</dd></div>
+            <div><dt>Colores del aviso</dt><dd>Verde: tranquilo. Amarillo: cuidado. Rojo: peligro.</dd></div>
+          </dl>
+        </details>
+        <details name="pregunta">
+          <summary>¿Cuánto cuesta?</summary>
+          <p>Nada. La app es gratuita.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== El proyecto ===================== -->
+  <section class="seccion" id="proyecto" aria-labelledby="t-proyecto">
+    <div class="ancho">
+      <article class="proyecto revelar">
+        <div class="proyecto-texto">
+          <p class="etiqueta etiqueta-clara">Proyecto de Graduación II · UMG</p>
+          <h2 id="t-proyecto">Quién la hizo</h2>
+          <p>Soy Marlon Steven Quintana Recinos, estudiante de Ingeniería en Sistemas de Información en la Universidad Mariano Gálvez de Guatemala, Campus Jutiapa. AgroClima Jalapa es mi Proyecto de Graduación II.</p>
+          <p>Busca que el productor sepa a tiempo lo que viene a su parcela, y no solo a su municipio. Funciona a costo cero y es un proyecto académico sin fines de lucro: el código y los manuales están abiertos para quien quiera revisarlos.</p>
+          <p class="firma">Marlon Steven Quintana Recinos</p>
+          <div class="proyecto-enlaces">
+            <!-- TESIS: cuando esté lista, cambiar este <span> por un enlace <a class="boton boton-lima" href="...">. -->
+            <span class="boton boton-fantasma pendiente" aria-disabled="true"><svg class="icono" aria-hidden="true"><use href="#i-escuela"/></svg>Tesis en PDF: pronto</span>
+            <a class="boton boton-fantasma" href="manuales/manual-tecnico.pdf" type="application/pdf"><svg class="icono" aria-hidden="true"><use href="#i-hoja"/></svg>Manual técnico</a>
+            <a class="boton boton-fantasma" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa"><svg class="icono" aria-hidden="true"><use href="#i-codigo"/></svg>Código en GitHub</a>
           </div>
         </div>
-      </div>
-
-      <div class="intercambio">
-        <p class="paso" data-reveal>Luego, guarde el teléfono. Cada 3 horas, de día y de noche, la app revisa el pronóstico de 5 días.</p>
-        <div class="llamada" data-ui data-reveal>
-          <ol class="horas">
-            <li>12 a.m.</li><li>3 a.m.</li><li class="ahora">6 a.m.</li><li>9 a.m.</li><li>12 p.m.</li><li>3 p.m.</li><li>6 p.m.</li><li>9 p.m.</li>
-          </ol>
+        <div class="proyecto-ficha">
+          <p class="ficha-titulo">Aplicación móvil de monitoreo meteorológico y alerta de riesgos climáticos para la producción agrícola en Jalapa</p>
+          <dl>
+            <div><dt>Autor</dt><dd>Marlon Steven Quintana Recinos</dd></div>
+            <div><dt>Universidad</dt><dd>Mariano Gálvez de Guatemala, Campus Jutiapa</dd></div>
+            <div><dt>Carrera</dt><dd>Ingeniería en Sistemas de Información</dd></div>
+          </dl>
+          <ul class="tecnologias">
+            <li>Flutter</li><li>Firebase (plan gratuito)</li><li>OpenWeather</li><li>GitHub Actions</li><li>flutter_map + Esri</li>
+          </ul>
         </div>
-        <div class="respuesta" data-ui data-reveal>
-          <table class="pronostico">
-            <caption>Pronóstico de El Guayabal</caption>
-            <thead><tr><th scope="col">Día</th><th scope="col">Máx.</th><th scope="col">Mín.</th><th scope="col">Lluvia</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Hoy</th><td>26°</td><td>17°</td><td>20 %</td></tr>
-              <tr class="marca-riesgo"><th scope="row">Mañana</th><td>36°</td><td>16°</td><td>0 %</td></tr>
-              <tr><th scope="row">Jueves</th><td>33°</td><td>15°</td><td>10 %</td></tr>
-              <tr class="marca-riesgo"><th scope="row">Viernes</th><td>27°</td><td>18°</td><td>89 %, 22 mm en una hora</td></tr>
-              <tr><th scope="row">Sábado</th><td>25°</td><td>17°</td><td>60 %</td></tr>
-            </tbody>
-          </table>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== Cierre ===================== -->
+  <section class="seccion cierre" aria-labelledby="t-cierre">
+    <div class="ancho">
+      <form class="cierre-caja" id="compartir" action="https://api.whatsapp.com/send" method="get" target="_blank">
+        <input type="hidden" name="text" value="Mire esta app gratis para el clima de la parcela y avisos antes de que pase: https://stevenquintanagt.github.io/Pag_Agroclima/">
+        <h2 id="t-cierre" class="cierre-frase">
+          <span>Mándesela a</span>
+          <label class="oculto-texto" for="vecino">Nombre de a quién se la manda</label>
+          <input class="hueco" id="vecino" type="text" placeholder="su vecino" maxlength="20" autocomplete="off">
+          <span>por</span> <button class="hueco-boton" type="submit"><svg aria-hidden="true"><use href="#i-compartir"/></svg>WhatsApp</button>
+        </h2>
+        <p class="cierre-nota">Se abre WhatsApp con un mensaje y el enlace de esta página. Usted elige a quién mandarlo.</p>
+        <div class="qr solo-ancho">
+          <img src="img/qr.svg" alt="Código QR con la dirección de esta página" width="104" height="104" loading="lazy">
+          <p><b>¿Está en la computadora?</b> Apunte la cámara de su teléfono para abrir esta página.</p>
         </div>
-      </div>
-
-      <div class="intercambio intercambio-final">
-        <p class="paso" data-reveal>Si viene algo que su cultivo no aguanta, le llega un aviso con qué hacer, aunque tenga la app cerrada.</p>
-        <figure class="respuesta respuesta-ancha" data-reveal>
-          <img src="img/notificacion.webp" width="760" height="581" loading="lazy" decoding="async" alt="Dos avisos reales en la barra de un teléfono: PRECAUCIÓN, lluvia fuerte en casa, el viernes hasta 22 mm de lluvia por hora; PELIGRO, puede caer helada en casa, mañana en la madrugada puede bajar a -1 °C.">
-          <figcaption class="small">Avisos de prueba en el teléfono del autor, en Monjas.</figcaption>
-        </figure>
-      </div>
+      </form>
     </div>
-  </section>
-
-  <!-- ===== Usted decide qué suena: demostración con controles (pliego §7.4) ===== -->
-  <section class="escaparate wrap" id="mis-avisos" aria-labelledby="t-mis-avisos">
-    <h2 id="t-mis-avisos" class="head-2">Usted decide qué suena</h2>
-    <p class="escaparate-intro">En la pantalla Mis avisos usted apaga lo que no le sirve. Lo que no suena igual queda guardado en Alertas.</p>
-
-    <div class="panel" data-ui>
-      <div class="panel-demo">
-        <p class="panel-titulo">Avisos de esta semana en El Guayabal</p>
-        <ul class="semana" id="semana">
-          <li data-tipo="temperaturaBaja" data-nivel="3" data-hora="3"><span class="chip chip-peligro">PELIGRO</span><span class="semana-texto"><b>Puede caer helada</b> Jueves, 3:00 a.m.</span><span class="destino">Suena</span></li>
-          <li data-tipo="lluviaIntensa" data-nivel="2" data-hora="15"><span class="chip chip-precaucion">PRECAUCIÓN</span><span class="semana-texto"><b>Lluvia fuerte</b> Viernes, 3:00 p.m.</span><span class="destino">Suena</span></li>
-          <li data-tipo="vientoFuerte" data-nivel="2" data-hora="0"><span class="chip chip-precaucion">PRECAUCIÓN</span><span class="semana-texto"><b>Viento fuerte</b> Sábado, 12:00 a.m.</span><span class="destino destino-no">Queda en Alertas</span></li>
-          <li data-tipo="temperaturaAlta" data-nivel="3" data-hora="12"><span class="chip chip-peligro">PELIGRO</span><span class="semana-texto"><b>Mucho calor</b> Mañana, 12:00 p.m.</span><span class="destino">Suena</span></li>
-          <li data-tipo="sequia" data-nivel="1" data-hora="9"><span class="chip chip-normal">NORMAL</span><span class="semana-texto"><b>Días sin lluvia</b> Domingo, 9:00 a.m.</span><span class="destino destino-no">Queda en Alertas</span></li>
-        </ul>
-        <p class="panel-cuenta" id="cuenta" aria-live="polite">Le suenan 3 de 5 avisos.</p>
-        <a class="link-plain panel-enlace" href="manuales/manual-de-usuario.pdf" type="application/pdf">Vea Mis avisos en el manual de usuario</a>
-      </div>
-      <div class="panel-controles" id="prefs" role="group" aria-label="Mis avisos">
-        <p class="panel-titulo">Mis avisos</p>
-        <label class="fila"><span>Frío y helada</span><input type="checkbox" role="switch" name="temperaturaBaja" checked></label>
-        <label class="fila"><span>Lluvia fuerte</span><input type="checkbox" role="switch" name="lluviaIntensa" checked></label>
-        <label class="fila"><span>Viento fuerte</span><input type="checkbox" role="switch" name="vientoFuerte" checked></label>
-        <label class="fila"><span>Mucho calor</span><input type="checkbox" role="switch" name="temperaturaAlta" checked></label>
-        <label class="fila"><span>Días sin lluvia</span><input type="checkbox" role="switch" name="sequia" checked></label>
-        <label class="fila"><span>Mucha humedad</span><input type="checkbox" role="switch" name="humedadAlta" checked></label>
-        <label class="fila"><span>Avisarme desde</span>
-          <select name="minimo">
-            <option value="1">Todo</option>
-            <option value="2" selected>Precaución</option>
-            <option value="3">Solo peligro</option>
-          </select>
-        </label>
-        <label class="fila"><span>No sonar de noche <small>De 10:00 p.m. a 5:00 a.m.</small></span><input type="checkbox" role="switch" name="noche" checked></label>
-      </div>
-    </div>
-    <p class="escaparate-pie small">Toque los interruptores. Los avisos de PELIGRO suenan aunque sea de noche.</p>
-  </section>
-
-  <!-- ===== Instalar y manuales: filas de dos extremos (pliego §7.5) ===== -->
-  <section class="lista wrap" id="instalar" aria-labelledby="t-instalar">
-    <div class="lista-columna">
-      <h2 id="t-instalar" class="head-2">Instálela en cinco pasos</h2>
-      <p class="lista-intro">La app no está en la Play Store: se instala con un archivo.</p>
-      <p class="grupo">Pasos</p>
-      <ol class="filas">
-        <li><span class="punto"></span><span class="fila-nombre">Primero, toque “Descargar la app” y espere a que baje el archivo.</span><span class="fila-valor">38.9 MB</span></li>
-        <li><span class="punto"></span><span class="fila-nombre">Ábralo desde Archivos, en la carpeta Descargas.</span><span class="fila-valor">Archivos</span></li>
-        <li><span class="punto"></span><span class="fila-nombre">Si el teléfono pide permiso para “instalar apps desconocidas”, actívelo y vuelva atrás.</span><span class="fila-valor">una sola vez</span></li>
-        <li><span class="punto"></span><span class="fila-nombre">Toque Instalar. Si Play Protect dice que no conoce la app, toque Más detalles y luego Instalar de todas formas.</span><span class="fila-valor">Play Protect</span></li>
-        <li><span class="punto"></span><span class="fila-nombre">Al final, abra AgroClima, cree su cuenta y registre su parcela.</span><span class="fila-valor">listo</span></li>
-      </ol>
-      <p class="grupo">Manuales en PDF</p>
-      <ul class="filas">
-        <li><span class="punto punto-claro"></span><a class="fila-nombre link-plain" href="manuales/manual-de-instalacion.pdf" type="application/pdf">Manual de instalación, con imágenes</a><span class="fila-valor">14 págs., 0.9 MB</span></li>
-        <li><span class="punto punto-claro"></span><a class="fila-nombre link-plain" href="manuales/manual-de-usuario.pdf" type="application/pdf">Manual de usuario: cuenta, parcelas, clima, avisos y reportes</a><span class="fila-valor">25 págs., 2.9 MB</span></li>
-        <li><span class="punto punto-claro"></span><a class="fila-nombre link-plain" href="manuales/manual-tecnico.pdf" type="application/pdf">Manual técnico, para desarrolladores y el jurado</a><span class="fila-valor">27 págs., 2.0 MB</span></li>
-      </ul>
-      <p class="lista-accion">
-        <a class="button" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">Descargar la app</a>
-      </p>
-      <details class="huella">
-        <summary>Para verificar el archivo</summary>
-        <p class="small">Huella SHA-256 del certificado de firma:</p>
-        <code>29:59:45:5F:15:D8:3C:FE:72:32:E3:58:F9:26:35:1C:0D:E7:5E:D2:90:23:6A:A2:18:F5:C6:FC:7D:46:82:5B</code>
-      </details>
-    </div>
-  </section>
-
-  <!-- ===== Preguntas: acordeón de mosaicos (pliego §7.6) ===== -->
-  <section class="preguntas wrap" id="preguntas" aria-labelledby="t-preguntas">
-    <h2 id="t-preguntas" class="head preguntas-titulo">Preguntas</h2>
-    <div class="mosaicos">
-      <details name="pregunta">
-        <summary>¿Por qué no me llegan avisos?</summary>
-        <p>Revise que tenga internet y que los avisos estén encendidos en “Mis avisos”. También revise que el teléfono deje a la app mandar avisos.</p>
-      </details>
-      <details name="pregunta">
-        <summary>¿Puedo poner más de una parcela?</summary>
-        <p>Sí. En “Mis parcelas” toque “Agregar parcela”. Cada una tiene su clima y sus avisos.</p>
-      </details>
-      <details name="pregunta">
-        <summary>¿Funciona sin señal?</summary>
-        <p>Sí. Se ve el último clima guardado y la app le dice de qué hora es. Los avisos le llegan cuando vuelva la señal.</p>
-      </details>
-      <details name="pregunta">
-        <summary>¿Los avisos son oficiales?</summary>
-        <p>No. Son información de apoyo calculada con el pronóstico. Para emergencias, siga lo que digan el INSIVUMEH y CONRED.</p>
-      </details>
-      <details name="pregunta">
-        <summary>¿Qué hago cuando me llega un aviso?</summary>
-        <p>Ábralo: le dice qué puede pasar, cuándo y qué puede hacer para cuidar su cultivo. Cuando haya tomado medidas, toque “Ya tomé medidas”.</p>
-      </details>
-      <details name="pregunta">
-        <summary>¿De dónde sale el pronóstico?</summary>
-        <p>Del servicio meteorológico OpenWeather, para un cuadro de unos 5&nbsp;km donde está su parcela: no es una medición en su terreno. Se revisa cada 3 horas, aunque tenga la app cerrada, y llega hasta 5 días adelante. Los mapas son de Esri y los límites de los municipios, de geoBoundaries.</p>
-      </details>
-      <details name="pregunta">
-        <summary>¿Qué hacen con mis datos?</summary>
-        <ul>
-          <li>Guardamos su nombre, correo, teléfono (si lo dio), sus parcelas y los avisos que recibió, solo para darle el clima y los avisos de sus parcelas.</li>
-          <li>No vendemos ni compartimos sus datos con nadie.</li>
-          <li>Su ubicación se usa solo cuando usted pide poner la parcela donde está.</li>
-          <li>Puede eliminar su cuenta cuando quiera en Ajustes: se borra todo en unas horas.</li>
-          <li>La app es gratuita y es información de apoyo: las decisiones sobre su cultivo son suyas.</li>
-        </ul>
-      </details>
-      <details name="pregunta">
-        <summary>¿Qué quieren decir las palabras de la app?</summary>
-        <dl class="glosario">
-          <div><dt>Helada</dt><dd>Cuando el frío quema la hoja de noche.</dd></div>
-          <div><dt>Canícula</dt><dd>Los días secos de julio en plena lluvia.</dd></div>
-          <div><dt>Humedad</dt><dd>Cuánta agua trae el aire.</dd></div>
-          <div><dt>Milímetro</dt><dd>10 mm moja un dedo de tierra.</dd></div>
-          <div><dt>Días sin lluvia</dt><dd>Varios días seguidos sin que llueva.</dd></div>
-          <div><dt>Viento fuerte</dt><dd>El que puede tumbar la milpa.</dd></div>
-          <div><dt>Pronóstico</dt><dd>Lo que se espera que pase.</dd></div>
-          <div><dt>Colores del aviso</dt><dd>Verde: tranquilo. Amarillo: cuidado. Rojo: peligro.</dd></div>
-        </dl>
-      </details>
-      <details name="pregunta">
-        <summary>¿Cuánto cuesta?</summary>
-        <p>Nada. La app es gratuita.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- ===== Quién la hizo: la carta (pliego §7.3) ===== -->
-  <section class="carta wrap" id="proyecto" aria-labelledby="t-proyecto">
-    <div class="carta-columna">
-      <img class="carta-retrato" src="img/logo.svg" alt="" width="44" height="44" loading="lazy">
-      <h2 id="t-proyecto" class="head-2">Quién la hizo</h2>
-      <p>Soy Marlon Steven Quintana Recinos, estudiante de Ingeniería en Sistemas de Información en la Universidad Mariano Gálvez de Guatemala, Campus Jutiapa. AgroClima Jalapa es mi Proyecto de Graduación II.</p>
-      <p>La tesis se llama <span class="marcador">“Aplicación móvil de monitoreo meteorológico y alerta de riesgos climáticos para la producción agrícola en Jalapa”</span>. Busca que el productor sepa a tiempo lo que viene a su parcela, y no solo a su municipio.</p>
-      <p>La app funciona a costo cero: usa el plan gratuito de Firebase y de OpenWeather, los mapas de Esri, y el ciclo de avisos corre en GitHub Actions. Está hecha en Flutter, solo para Android.</p>
-      <p>Es un proyecto académico sin fines de lucro. El código y los manuales están abiertos para quien quiera revisarlos.</p>
-      <p class="firma">Marlon Steven Quintana Recinos</p>
-      <p class="firma-rol small">Autor del proyecto, UMG Campus Jutiapa</p>
-      <ul class="carta-enlaces">
-        <!-- TESIS: cuando esté lista, cambiar este <li> por un enlace al PDF. -->
-        <li><span class="pendiente">Tesis en PDF: pronto</span></li>
-        <li><a class="link-plain" href="manuales/manual-tecnico.pdf" type="application/pdf">Manual técnico (PDF)</a></li>
-        <li><a class="link-plain" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa">Código en GitHub</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== Cierre: una frase con un espacio (pliego §7.7) ===== -->
-  <section class="cierre wrap" aria-labelledby="t-cierre">
-    <form class="cierre-form" id="compartir" action="https://api.whatsapp.com/send" method="get" target="_blank">
-      <input type="hidden" name="text" value="Mire esta app gratis para el clima de la parcela y avisos antes de que pase: https://stevenquintanagt.github.io/Pag_Agroclima/">
-      <h2 id="t-cierre" class="display cierre-frase">
-        <span>Mándesela a</span>
-        <label class="sr-only" for="vecino">Nombre de a quién se la manda</label>
-        <input class="hueco" id="vecino" type="text" placeholder="su vecino" maxlength="20" autocomplete="off">
-        <span>por</span> <button class="hueco-boton" type="submit">WhatsApp</button>
-      </h2>
-      <p class="cierre-nota">Se abre WhatsApp con un mensaje y el enlace de esta página. Usted elige a quién mandarlo.</p>
-    </form>
   </section>
 
 </main>
 
-<!-- ===== Pie de mosaicos (pliego §7.8) ===== -->
 <footer class="pie">
-  <div class="mosaico m-frase">
-    <p class="m-grande">Es información de apoyo. Para emergencias, siga lo que digan el INSIVUMEH y CONRED.</p>
-    <p class="small">Proyecto académico sin fines de lucro. Versión 1.0.0, 2026. Clima de OpenWeather, mapas de Esri, límites de geoBoundaries. Esta página no usa cookies ni cuenta visitas.</p>
+  <div class="ancho pie-grid">
+    <div class="pie-marca">
+      <a class="marca marca-clara" href="#"><img src="img/logo.svg" alt="" width="36" height="36"><span>AgroClima <b>Jalapa</b></span></a>
+      <p>El clima de su parcela, antes de que pase.</p>
+      <p class="pie-legal">Proyecto académico sin fines de lucro. Versión 1.0.0, 2026. Esta página no usa cookies ni cuenta visitas.</p>
+    </div>
+    <nav class="pie-col" aria-label="Pie">
+      <p class="pie-titulo">La app</p>
+      <a href="#cultivos">Lo que aguanta su cultivo</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#mis-avisos">Mis avisos</a>
+      <a href="#instalar">Instalar y manuales</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#proyecto">El proyecto</a>
+    </nav>
+    <div class="pie-col">
+      <p class="pie-titulo">Para los 7 municipios</p>
+      <ul>
+        <li>Jalapa</li><li>San Pedro Pinula</li><li>San Luis Jilotepeque</li><li>San Manuel Chaparrón</li><li>San Carlos Alzatate</li><li>Monjas</li><li>Mataquescuintla</li>
+      </ul>
+    </div>
+    <div class="pie-col">
+      <p class="pie-titulo">Datos</p>
+      <p>Clima de OpenWeather. Mapas de Esri. Límites de municipios de geoBoundaries.</p>
+      <a class="boton boton-lima boton-chico" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk"><svg class="icono" aria-hidden="true"><use href="#i-bajar"/></svg>Descargar</a>
+    </div>
   </div>
-  <nav class="mosaico m-nav" aria-label="Pie">
-    <a class="link" href="#cultivos">Lo que aguanta su cultivo</a>
-    <a class="link" href="#como">Cómo le llega un aviso</a>
-    <a class="link" href="#mis-avisos">Mis avisos</a>
-    <a class="link" href="#instalar">Instalar y manuales</a>
-    <a class="link" href="#preguntas">Preguntas</a>
-    <a class="link" href="#proyecto">Quién la hizo</a>
-  </nav>
-  <div class="mosaico m-lugar">
-    <p class="m-titulo">Jalapa, Guatemala</p>
-    <ul class="small">
-      <li>Jalapa</li><li>San Pedro Pinula</li><li>San Luis Jilotepeque</li><li>San Manuel Chaparrón</li><li>San Carlos Alzatate</li><li>Monjas</li><li>Mataquescuintla</li>
-    </ul>
-  </div>
-  <div class="mosaico m-qr">
-    <img class="solo-ancho" src="img/qr.svg" alt="Código QR con la dirección de esta página" width="104" height="104" loading="lazy">
-    <p><span class="solo-ancho">Apunte la cámara de su teléfono para abrir esta página. </span><a class="link-plain" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa">Código en GitHub</a></p>
-  </div>
-  <div class="mosaico m-marca" aria-hidden="true"><p>AgroClima Jalapa</p></div>
-  <a class="mosaico m-accion" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">
-    <span>Descargar la app</span>
-    <svg viewBox="0 0 48 48" width="56" height="56" aria-hidden="true"><path d="M10 38 38 10M16 10h22v22" fill="none" stroke="currentColor" stroke-width="4"/></svg>
-  </a>
+  <div class="pie-gigante" aria-hidden="true"></div>
 </footer>
 
 <script src="app.js" defer></script>

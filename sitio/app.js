@@ -1,81 +1,59 @@
-// AgroClima Jalapa — lo poco de JavaScript que necesita la página.
-// Sin JS todo se lee igual: el simulador muestra su estado inicial y la tabla de límites.
+// AgroClima Jalapa — el poco JavaScript de la página. Sin JS todo se lee igual:
+// el simulador muestra su estado inicial y la tabla de límites, y la portada, la primera pantalla.
+
+const quieto = matchMedia('(prefers-reduced-motion: reduce)');
 
 // ---------- Entradas al aparecer (una sola vez, con escalón) ----------
 (() => {
-  // las partes de cada sección: el título, luego el texto, luego la pieza, con 70 ms entre una y otra
-  const grupos = [
-    ['#cultivos .sim-columna', ':scope > h2, :scope > .sim-intro, .bloque, :scope > .limites'],
-    ['#como .como-columna', ':scope > h2'],
-    ['#mis-avisos', ':scope > h2, :scope > .escaparate-intro, .panel, .semana li, :scope > .escaparate-pie'],
-    ['#instalar .lista-columna', ':scope > h2, :scope > .lista-intro, .grupo, .filas li, .lista-accion'],
-    ['#preguntas', ':scope > h2, .mosaicos details'],
-    ['#proyecto .carta-columna', ':scope > *'],
-    ['.cierre-form', ':scope > h2, :scope > .cierre-nota'],
-    ['.pie', ':scope > .mosaico'],
-  ];
-  for (const [raiz, partes] of grupos) {
-    const r = document.querySelector(raiz);
-    if (!r) continue;
-    r.querySelectorAll(partes).forEach((el, i) => {
-      if (el.hasAttribute('data-reveal')) return;
-      el.setAttribute('data-reveal', '');
-      el.style.setProperty('--d', `${Math.min(i, 6) * 70}ms`);
-    });
-  }
-  const targets = document.querySelectorAll('[data-reveal]');
-  if (!targets.length) return;
-  // escalón dentro de cada grupo: la frase, luego la llamada, luego la respuesta
-  document.querySelectorAll('.intercambio').forEach((g) => {
-    g.querySelectorAll('[data-reveal]').forEach((el, i) => el.style.setProperty('--d', `${i * 80}ms`));
-  });
-  if (!('IntersectionObserver' in window)) { targets.forEach((el) => el.classList.add('is-in')); return; }
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
-  targets.forEach((el) => io.observe(el));
+  const grupos = ['.pasos3', '.pasos', '.manuales', '.acordeon', '.semana'];
+  grupos.forEach((g) => document.querySelectorAll(`${g} > *`).forEach((el, i) => {
+    el.classList.add('revelar');
+    el.style.setProperty('--d', `${Math.min(i, 6) * 80}ms`);
+  }));
+  const els = document.querySelectorAll('.revelar');
+  if (!('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('es-visible')); return; }
+  const io = new IntersectionObserver((entradas) => {
+    for (const e of entradas) if (e.isIntersecting) { e.target.classList.add('es-visible'); io.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  els.forEach((el) => io.observe(el));
   addEventListener('load', () => setTimeout(() => {
-    targets.forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('is-in'); });
+    els.forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add('es-visible'); });
   }, 2500));
 })();
 
-// ---------- Portada: la cinta de pantallas avanza mientras la frase se queda ----------
+// ---------- Portada: las pantallas reales pasan dentro del teléfono ----------
 (() => {
-  const hero = document.querySelector('.hero');
-  const cinta = document.querySelector('.carrete-cinta');
-  if (!hero || !cinta) return;
-  const ancho = matchMedia('(min-width: 1000px)');
-  const quieto = matchMedia('(prefers-reduced-motion: reduce)');
-  let pedido = false;
-  const mover = () => {
-    pedido = false;
-    if (!ancho.matches || quieto.matches) { cinta.style.transform = ''; return; }
-    const cuadros = cinta.children;
-    if (cuadros.length < 2) return;
-    const paso = cuadros[1].offsetTop - cuadros[0].offsetTop;
-    const recorrido = hero.offsetHeight - innerHeight;
-    const p = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / recorrido));
-    cinta.style.transform = `translateY(${-p * paso * (cuadros.length - 1)}px)`;
+  const pantallas = [...document.querySelectorAll('#pantallas .pantalla')];
+  const botones = [...document.querySelectorAll('#selector button')];
+  if (!pantallas.length) return;
+  let actual = 0, reloj = null;
+  const mostrar = (i) => {
+    actual = (i + pantallas.length) % pantallas.length;
+    pantallas.forEach((p, j) => p.classList.toggle('es-activa', j === actual));
+    botones.forEach((b, j) => b.setAttribute('aria-selected', String(j === actual)));
   };
-  const pedir = () => { if (!pedido) { pedido = true; requestAnimationFrame(mover); } };
-  addEventListener('scroll', pedir, { passive: true });
-  addEventListener('resize', pedir);
-  mover();
+  const seguir = () => { clearInterval(reloj); if (!quieto.matches) reloj = setInterval(() => mostrar(actual + 1), 3800); };
+  botones.forEach((b) => b.addEventListener('click', () => { mostrar(+b.dataset.i); seguir(); }));
+  const telefono = document.querySelector('.hero-telefono');
+  telefono.addEventListener('pointerenter', () => clearInterval(reloj));
+  telefono.addEventListener('pointerleave', seguir);
+  document.addEventListener('visibilitychange', () => (document.hidden ? clearInterval(reloj) : seguir()));
+  seguir();
 })();
 
 // ---------- Simulador de avisos ----------
 // Límites: docs/UMBRALES.md (Tabla 31 de la tesis). Textos: functions/src/mensajes.js de la app.
 (() => {
-  const form = document.getElementById('sim');
-  if (!form) return;
+  const raiz = document.getElementById('sim');
+  if (!raiz) return;
   const lista = document.getElementById('sim-notis');
-  const detalle = document.getElementById('sim-detalle');
   const chip = document.getElementById('sim-chip');
   const medida = document.getElementById('sim-medida');
   const salidas = { tmin: ['o-tmin', ' °C'], tmax: ['o-tmax', ' °C'], lluvia: ['o-lluvia', ' mm'], viento: ['o-viento', ' km/h'] };
 
   const PALABRA = { 1: 'NORMAL', 2: 'PRECAUCIÓN', 3: 'PELIGRO' };
   const CLASE = { 1: 'chip-normal', 2: 'chip-precaucion', 3: 'chip-peligro' };
+  const ICONO = { 1: '#i-bien', 2: '#i-cuidado', 3: '#i-peligro' };
   const SU_CULTIVO = { maiz: 'su maíz no corre', frijol: 'su frijol no corre', cafe: 'su café no corre', hortalizas: 'sus hortalizas no corren' };
   const MEDIDAS = {
     lluviaIntensa: {
@@ -102,23 +80,39 @@
   };
   const medidaDe = (tipo, cultivo) => MEDIDAS[tipo][cultivo] || MEDIDAS[tipo][''];
 
+  // nivel para cada riesgo según cultivo, etapa y días (0 = sin aviso)
+  const nivelFrio = (c, t) => (t <= 0 ? 3 : (c === 'cafe' && t < 15) || (c === 'frijol' && t < 18) ? 2 : 0);
+  const limiteCalor = { cafe: 30, frijol: 28, maiz: 35 };
+  const nivelCalor = (c, etapa, dias, t) => {
+    const lim = limiteCalor[c];
+    if (!lim || t <= lim) return 0;
+    if (c === 'maiz') return etapa === 'floracion' || etapa === 'llenado' ? 3 : etapa === 'desarrolloVegetativo' ? 2 : 0;
+    return dias >= 3 ? 3 : 2;
+  };
+  const nivelUmbral = (v) => (v > 30 ? 3 : v > 15 ? 2 : 0);
+
   const evaluar = (d) => {
     const r = [];
-    // lluvia y viento: todos los cultivos
-    if (d.lluvia > 30) r.push({ tipo: 'lluviaIntensa', nivel: 3, valor: d.lluvia }); else if (d.lluvia > 15) r.push({ tipo: 'lluviaIntensa', nivel: 2, valor: d.lluvia });
-    if (d.viento > 30) r.push({ tipo: 'vientoFuerte', nivel: 3, valor: d.viento }); else if (d.viento > 15) r.push({ tipo: 'vientoFuerte', nivel: 2, valor: d.viento });
-    // frío: helada para todos; café < 15 y frijol < 18
-    if (d.tmin <= 0) r.push({ tipo: 'temperaturaBaja', nivel: 3, valor: d.tmin, helada: true });
-    else if ((d.cultivo === 'cafe' && d.tmin < 15) || (d.cultivo === 'frijol' && d.tmin < 18)) r.push({ tipo: 'temperaturaBaja', nivel: 2, valor: d.tmin });
-    // calor
-    const limite = { cafe: 30, frijol: 28, maiz: 35 }[d.cultivo];
-    if (limite && d.tmax > limite) {
-      let nivel = 0;
-      if (d.cultivo === 'maiz') nivel = d.etapa === 'floracion' || d.etapa === 'llenado' ? 3 : d.etapa === 'desarrolloVegetativo' ? 2 : 0;
-      else nivel = d.dias >= 3 ? 3 : 2;
-      if (nivel) r.push({ tipo: 'temperaturaAlta', nivel, valor: d.tmax, limite, racha: d.cultivo !== 'maiz' && d.dias >= 3 });
-    }
+    const ll = nivelUmbral(d.lluvia); if (ll) r.push({ tipo: 'lluviaIntensa', nivel: ll, valor: d.lluvia });
+    const vi = nivelUmbral(d.viento); if (vi) r.push({ tipo: 'vientoFuerte', nivel: vi, valor: d.viento });
+    const fr = nivelFrio(d.cultivo, d.tmin); if (fr) r.push({ tipo: 'temperaturaBaja', nivel: fr, valor: d.tmin, helada: d.tmin <= 0 });
+    const ca = nivelCalor(d.cultivo, d.etapa, d.dias, d.tmax);
+    if (ca) r.push({ tipo: 'temperaturaAlta', nivel: ca, valor: d.tmax, limite: limiteCalor[d.cultivo], racha: d.cultivo !== 'maiz' && d.dias >= 3 });
     return r.sort((a, b) => b.nivel - a.nivel);
+  };
+
+  // pinta cada barra con sus zonas: verde (sin aviso), amarillo (PRECAUCIÓN) y rojo (PELIGRO)
+  const COLOR = { 0: 'var(--zona-normal)', 1: 'var(--zona-normal)', 2: 'var(--zona-precaucion)', 3: 'var(--zona-peligro)' };
+  const pintarPista = (input, nivelDe) => {
+    const min = +input.min, max = +input.max, paradas = [];
+    let previo = null;
+    for (let v = min; v <= max; v++) {
+      const n = nivelDe(v);
+      const desde = ((v - min) / (max - min + 1)) * 100, hasta = ((v - min + 1) / (max - min + 1)) * 100;
+      if (n !== previo) { paradas.push(`${COLOR[n]} ${desde.toFixed(2)}%`); previo = n; }
+      paradas.push(`${COLOR[n]} ${hasta.toFixed(2)}%`);
+    }
+    input.style.setProperty('--pista', `linear-gradient(90deg, ${paradas.join(', ')})`);
   };
 
   const nombreRiesgo = (x) => ({ lluviaIntensa: 'lluvia fuerte', vientoFuerte: 'viento fuerte', temperaturaBaja: x.helada ? 'puede caer helada' : 'frío', temperaturaAlta: 'mucho calor' })[x.tipo];
@@ -133,7 +127,7 @@
     }
   };
 
-  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  const el = (tag, cls, texto) => { const n = document.createElement(tag); if (cls) n.className = cls; if (texto != null) n.textContent = texto; return n; };
   const noti = (titulo, cuerpo, nueva) => {
     const li = el('li', 'noti' + (nueva ? ' es-nueva' : ''));
     const img = el('img'); img.src = 'img/logo.svg'; img.alt = ''; img.width = 36; img.height = 36;
@@ -142,16 +136,25 @@
     li.append(img, div);
     return li;
   };
+  const ponerChip = (nivel) => {
+    chip.className = 'chip ' + CLASE[nivel];
+    chip.querySelector('use').setAttribute('href', ICONO[nivel]);
+    chip.querySelector('span').textContent = PALABRA[nivel];
+  };
 
+  const valor = (n) => { const e = raiz.querySelector(`[name="${n}"]:checked`) || raiz.querySelector(`[name="${n}"]:not([type=radio])`); return e ? e.value : ''; };
   let anterior = '';
   const pintar = () => {
-    const v = (n) => { const el = form.querySelector(`[name="${n}"]:checked`) || form.querySelector(`[name="${n}"]:not([type=radio])`); return el ? el.value : ''; };
     const d = {
-      cultivo: v('cultivo'), etapa: v('etapa'),
-      parcela: v('parcela').trim() || 'su parcela',
-      tmin: +v('tmin'), tmax: +v('tmax'), lluvia: +v('lluvia'), viento: +v('viento'), dias: +v('dias'),
+      cultivo: valor('cultivo'), etapa: valor('etapa'),
+      parcela: valor('parcela').trim() || 'su parcela',
+      tmin: +valor('tmin'), tmax: +valor('tmax'), lluvia: +valor('lluvia'), viento: +valor('viento'), dias: +valor('dias'),
     };
     for (const [k, [id, u]] of Object.entries(salidas)) document.getElementById(id).textContent = d[k] + u;
+    pintarPista(raiz.querySelector('[name=tmin]'), (v) => nivelFrio(d.cultivo, v));
+    pintarPista(raiz.querySelector('[name=tmax]'), (v) => nivelCalor(d.cultivo, d.etapa, d.dias, v));
+    pintarPista(raiz.querySelector('[name=lluvia]'), nivelUmbral);
+    pintarPista(raiz.querySelector('[name=viento]'), nivelUmbral);
 
     const riesgos = evaluar(d);
     const firma = JSON.stringify(riesgos.map((x) => [x.tipo, x.nivel]));
@@ -159,22 +162,18 @@
     lista.replaceChildren();
     if (!riesgos.length) {
       lista.append(noti(`Todo tranquilo en ${d.parcela}`, `Con este pronóstico ${SU_CULTIVO[d.cultivo]} riesgo. No le llega ningún aviso.`, nuevas));
-      chip.className = 'chip chip-normal'; chip.textContent = 'NORMAL';
-      detalle.classList.add('es-calma');
+      ponerChip(1);
       medida.textContent = 'La app sigue revisando el pronóstico cada 3 horas, aunque tenga el teléfono guardado.';
       return;
     }
     riesgos.slice(0, 3).forEach((x) => {
-      const [corta] = medidaDe(x.tipo, d.cultivo);
-      lista.append(noti(`${PALABRA[x.nivel]}: ${nombreRiesgo(x)} en ${d.parcela}`, `${situacion(x)} ${corta}`, nuevas));
+      lista.append(noti(`${PALABRA[x.nivel]}: ${nombreRiesgo(x)} en ${d.parcela}`, `${situacion(x)} ${medidaDe(x.tipo, d.cultivo)[0]}`, nuevas));
     });
-    const top = riesgos[0];
-    chip.className = 'chip ' + CLASE[top.nivel]; chip.textContent = PALABRA[top.nivel];
-    detalle.classList.remove('es-calma');
-    medida.textContent = medidaDe(top.tipo, d.cultivo)[1];
+    ponerChip(riesgos[0].nivel);
+    medida.textContent = medidaDe(riesgos[0].tipo, d.cultivo)[1];
   };
-  form.addEventListener('input', pintar);
-  form.addEventListener('change', pintar);
+  raiz.addEventListener('input', pintar);
+  raiz.addEventListener('change', pintar);
   pintar();
 })();
 
@@ -182,20 +181,19 @@
 // Regla de la app (UMBRALES §6): suena si el tipo está encendido, el nivel llega al mínimo y no es de
 // noche (de 10 p.m. a 5 a.m.), salvo PELIGRO, que siempre suena.
 (() => {
-  const form = document.getElementById('prefs');
+  const raiz = document.getElementById('prefs');
   const filas = document.querySelectorAll('#semana li');
   const cuenta = document.getElementById('cuenta');
-  if (!form || !filas.length) return;
+  if (!raiz || !filas.length) return;
+  const campo = (n) => raiz.querySelector(`[name="${n}"]`);
   const pintar = () => {
-    const campo = (n) => form.querySelector(`[name="${n}"]`);
     const minimo = +campo('minimo').value;
     const noche = campo('noche').checked;
     let suenan = 0;
     filas.forEach((li) => {
       const nivel = +li.dataset.nivel, hora = +li.dataset.hora;
-      const encendido = campo(li.dataset.tipo).checked;
       const deNoche = hora >= 22 || hora < 5;
-      const suena = encendido && nivel >= minimo && (!noche || !deNoche || nivel === 3);
+      const suena = campo(li.dataset.tipo).checked && nivel >= minimo && (!noche || !deNoche || nivel === 3);
       const destino = li.querySelector('.destino');
       destino.textContent = suena ? 'Suena' : 'Queda en Alertas';
       destino.classList.toggle('destino-no', !suena);
@@ -204,8 +202,8 @@
     });
     cuenta.textContent = `Le suenan ${suenan} de ${filas.length} avisos.`;
   };
-  form.addEventListener('input', pintar);
-  form.addEventListener('change', pintar);
+  raiz.addEventListener('input', pintar);
+  raiz.addEventListener('change', pintar);
   pintar();
 })();
 

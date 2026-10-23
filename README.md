@@ -36,5 +36,6 @@ Si la universidad lo permite, subirla al Release como `Tesis-AgroClima-Jalapa.pd
 - Los límites del simulador y de su tabla vienen de `docs/UMBRALES.md` y los textos de los avisos de
   `functions/src/mensajes.js`, ambos del repositorio de la app; si cambian allá, hay que cambiarlos en
   `sitio/app.js` y en la tabla de `sitio/index.html`.
-- Diseño: dirección "The product performs" de la skill `design-taste-frontend` (`.claude/skills/`), con la paleta
-  y la letra de la app. Para revisarlo: `node .claude/skills/design-taste-frontend/scripts/inspect.mjs sitio/index.html`.
+- Diseño: el lenguaje visual de la app (verde #1B5E20, tarjetas redondeadas, semáforo NORMAL / PRECAUCIÓN /
+  PELIGRO), letra Roboto del sistema y sin fuentes externas. Las barras del simulador se pintan con las zonas
+  reales de cada cultivo.
