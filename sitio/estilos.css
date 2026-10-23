@@ -957,6 +957,93 @@ a:focus-visible, summary:focus-visible, .capturas:focus-visible {
 
 @keyframes aparecer { from { opacity: 0; transform: translateY(8px); } }
 
+
+/* ---------- Manuales ---------- */
+
+.oculto-texto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.enlace-manual { font-size: 16px; }
+.enlace-manual a { color: var(--lima); font-weight: 700; }
+
+.manuales { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.manual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 28px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+.manual::before {
+  /* Esquina doblada de hoja */
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(225deg, var(--fondo) 50%, var(--fondo-2) 50%);
+  border-bottom-left-radius: 14px;
+}
+.manual-cabeza { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-right: 40px; }
+.manual-icono {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--icono-fondo);
+}
+.manual-icono svg { width: 26px; height: 26px; fill: var(--icono); }
+.manual-para { margin: 0; font-size: 14px; font-weight: 700; color: var(--texto-suave); line-height: 1.3; }
+.manual h3 { font-size: 24px; margin-bottom: 10px; }
+.manual > p { color: var(--texto-suave); }
+.manual-temas { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-wrap: wrap; gap: 6px; }
+.manual-temas li {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--icono-fondo);
+  color: var(--icono);
+}
+.manual-pie {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--linea);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.manual-datos { font-size: 14px; color: var(--texto-suave); }
+
+.manual-tecnico {
+  color: #FFFFFF;
+  border-color: transparent;
+  background:
+    radial-gradient(80% 70% at 100% 0%, rgba(79, 195, 247, .16), transparent 60%),
+    linear-gradient(160deg, #13241A, #0A0E09);
+}
+.manual-tecnico::before { background: linear-gradient(225deg, var(--fondo) 50%, #24382A 50%); }
+.manual-tecnico > p, .manual-tecnico .manual-para, .manual-tecnico .manual-datos { color: rgba(255, 255, 255, .75); }
+.manual-tecnico .manual-icono { background: rgba(255, 255, 255, .1); }
+.manual-tecnico .manual-icono svg { fill: var(--lima); }
+.manual-tecnico .manual-temas li { background: rgba(255, 255, 255, .1); color: #E3F0DC; }
+.manual-tecnico .manual-pie { border-top-color: rgba(255, 255, 255, .12); }
+.manual-tecnico .boton { background: var(--lima); color: var(--bosque); }
+
 /* ---------- Pantallas medianas y anchas ---------- */
 
 @media (min-width: 560px) {
@@ -970,9 +1057,16 @@ a:focus-visible, summary:focus-visible, .capturas:focus-visible {
   .ejemplos { padding: 40px; }
 }
 
+@media (min-width: 1040px) {
+  .barra-enlaces { display: flex; }
+}
+
+@media (min-width: 560px) {
+  .marca { white-space: nowrap; }
+}
+
 @media (min-width: 900px) {
   .barra-enlaces {
-    display: flex;
     list-style: none;
     gap: 4px;
     margin: 0;
@@ -983,6 +1077,7 @@ a:focus-visible, summary:focus-visible, .capturas:focus-visible {
     align-items: center;
     min-height: 48px;
     padding: 0 14px;
+    white-space: nowrap;
     border-radius: 999px;
     text-decoration: none;
     font-size: 16px;
@@ -1038,6 +1133,7 @@ a:focus-visible, summary:focus-visible, .capturas:focus-visible {
   }
   .ejemplos { grid-template-columns: .9fr 1.1fr; align-items: center; padding: 56px; gap: 48px; }
   .glosario { grid-template-columns: repeat(4, 1fr); }
+  .manuales { grid-template-columns: repeat(3, 1fr); }
   .qr {
     display: flex;
     align-items: center;

@@ -6,7 +6,7 @@ a los productores de Jalapa y al jurado de la UMG. **No es una versión web de l
 - `sitio/`: HTML + CSS, sin frameworks ni compilación. Se publica tal cual.
 - `.github/workflows/pagina.yml`: publica `sitio/` en GitHub Pages con cada push a `main` que cambie `sitio/**`
   (o a mano desde *Actions → Publicar página → Run workflow*).
-- El APK y la tesis **no** van aquí: se descargan de los Releases del repositorio de la app
+- El APK y la tesis **no** van aquí (los manuales sí, en `sitio/manuales/`): se descargan de los Releases del repositorio de la app
   (`releases/latest/download/AgroClima-Jalapa.apk`).
 
 ## Activar la página
@@ -26,6 +26,8 @@ Si la universidad lo permite, subirla al Release como `Tesis-AgroClima-Jalapa.pd
 
 ## Otros archivos
 
+- `sitio/manuales/`: los manuales en PDF (instalación, usuario y técnico). Para cambiar uno, reemplace el archivo
+  con el **mismo nombre** y, si cambian las páginas o el peso, actualícelos en la sección "Manuales" de `sitio/index.html`.
 - `sitio/404.html`: página para direcciones que no existen (GitHub Pages la usa sola).
 - `sitio/img/compartir.jpg` (1200×630): la imagen que muestran WhatsApp y Facebook al compartir el enlace.
 - `sitio/img/qr.svg`: código QR con la dirección de la página (se muestra en pantallas anchas, para proyectar).
