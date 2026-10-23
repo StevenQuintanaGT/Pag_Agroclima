@@ -31,5 +31,10 @@ Si la universidad lo permite, subirla al Release como `Tesis-AgroClima-Jalapa.pd
 - `sitio/404.html`: página para direcciones que no existen (GitHub Pages la usa sola).
 - `sitio/img/compartir.jpg` (1200×630): la imagen que muestran WhatsApp y Facebook al compartir el enlace.
 - `sitio/img/qr.svg`: código QR con la dirección de la página (se muestra en pantallas anchas, para proyectar).
-- Los límites de la sección "Lo que aguanta su cultivo" vienen de `docs/UMBRALES.md` del repositorio de la app;
-  si cambian allá, hay que cambiarlos aquí.
+- `sitio/app.js`: el simulador de avisos ("Lo que aguanta su cultivo"), el panel "Mis avisos", la cinta de
+  pantallas de la portada y las entradas al bajar. Sin JavaScript la página se lee completa.
+- Los límites del simulador y de su tabla vienen de `docs/UMBRALES.md` y los textos de los avisos de
+  `functions/src/mensajes.js`, ambos del repositorio de la app; si cambian allá, hay que cambiarlos en
+  `sitio/app.js` y en la tabla de `sitio/index.html`.
+- Diseño: dirección "The product performs" de la skill `design-taste-frontend` (`.claude/skills/`), con la paleta
+  y la letra de la app. Para revisarlo: `node .claude/skills/design-taste-frontend/scripts/inspect.mjs sitio/index.html`.
