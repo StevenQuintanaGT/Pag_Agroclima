@@ -39,3 +39,9 @@ Si la universidad lo permite, subirla al Release como `Tesis-AgroClima-Jalapa.pd
 - Diseño: el lenguaje visual de la app (verde #1B5E20, tarjetas redondeadas, semáforo NORMAL / PRECAUCIÓN /
   PELIGRO), letra Roboto del sistema y sin fuentes externas. Las barras del simulador se pintan con las zonas
   reales de cada cultivo.
+
+## Al cambiar el CSS o el JavaScript
+
+En `sitio/index.html` y `sitio/404.html`, cambie el número de `?v=` en los enlaces a `estilos.css` y `app.js`
+(por ejemplo, la fecha del cambio). Así los teléfonos que ya abrieron la página descargan la versión nueva
+en vez de usar la guardada.
