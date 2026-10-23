@@ -112,7 +112,11 @@ Actions. También se puede lanzar a mano desde *Actions → Publicar página →
 - Autor: **Marlon Steven Quintana Recinos**, Universidad Mariano Gálvez de Guatemala.
 - Datos del clima: [OpenWeather](https://openweathermap.org/). Mapas: Esri. Límites de los municipios:
   [geoBoundaries](https://www.geoboundaries.org/).
-- Íconos: [Material Symbols](https://fonts.google.com/icons) de Google.
+- Íconos: [Material Symbols](https://fonts.google.com/icons) de Google, bajo licencia Apache 2.0.
+
+## Licencia
+
+El código de este repositorio se publica bajo la [licencia MIT](LICENSE). © 2026 Marlon Steven Quintana Recinos.
 
 Proyecto académico sin fines de lucro. Los avisos de la app son información de apoyo: para emergencias, siga lo
 que digan el INSIVUMEH y CONRED.
