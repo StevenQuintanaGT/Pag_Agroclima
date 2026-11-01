@@ -503,6 +503,30 @@ input[type="range"]:focus-visible { outline: 3px solid var(--cielo-claro); outli
 .pie-gigante::before { content: "AgroClima Jalapa"; }
 .pie-gigante { margin-top: 48px; font-size: clamp(3rem, 12.5vw, 11rem); font-weight: 900; letter-spacing: -0.06em; line-height: 0.8; text-align: center; white-space: nowrap; color: rgba(197, 232, 168, 0.1); transform: translateY(0.12em); user-select: none; }
 
+
+/* ---------- Video (YouTube se carga solo al tocar) ---------- */
+.video-sec { padding-bottom: var(--seccion); }
+.video-grid { display: grid; gap: 32px; align-items: center; }
+.video-texto > p:not(.etiqueta):not(.video-nota) { margin: 16px 0 8px; color: var(--texto-suave); font-size: 1.12rem; }
+.video-nota { font-size: 0.9rem; color: var(--texto-suave); }
+.video-marco { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r-xl); overflow: hidden; background: var(--verde-950); box-shadow: var(--sombra-alta); }
+.video-marco iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-portada { position: absolute; inset: 0; display: grid; place-items: center; text-decoration: none; color: #FFFFFF;
+  background:
+    radial-gradient(60% 80% at 50% 50%, rgba(46, 125, 50, 0.55), transparent 70%),
+    linear-gradient(160deg, var(--verde-800), var(--verde-950)); }
+.video-fondo { position: absolute; inset: 0; display: flex; justify-content: center; align-items: flex-start; gap: 4%; padding-top: 7%; }
+.video-fondo img { width: 22%; border-radius: 18px; box-shadow: 0 0 0 6px #0D120C, var(--sombra-alta); transform: translateY(8%); transition: transform 500ms var(--suave); }
+.video-fondo img:nth-child(2) { transform: translateY(-6%); }
+.video-boton { position: relative; z-index: 1; width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: var(--lima); color: var(--verde-900); box-shadow: 0 0 0 10px rgba(197, 232, 168, 0.25), var(--sombra-alta); transition: transform 200ms var(--suave); }
+.video-boton svg { width: 40px; height: 40px; fill: currentColor; margin-left: 4px; }
+.video-portada:focus-visible { outline: 3px solid var(--cielo-claro); outline-offset: -6px; }
+@media (hover: hover) and (pointer: fine) {
+  .video-portada:hover .video-boton { transform: scale(1.08); }
+  .video-portada:hover .video-fondo img:nth-child(2) { transform: translateY(-10%); }
+}
+@media (min-width: 1000px) { .video-grid { grid-template-columns: 5fr 7fr; gap: 56px; } }
+
 /* ---------- Tablet ---------- */
 @media (min-width: 720px) {
   .solo-ancho { display: block; }

@@ -39,6 +39,7 @@ descargarla, y el **jurado y los docentes de la UMG**, que revisan el proyecto. 
 | Sección | Qué hace |
 | --- | --- |
 | **Portada** | Las pantallas reales de la app pasan dentro de un teléfono, con el botón de descarga a la vista. |
+| **Video** | El video de la app en YouTube. El reproductor se carga solo cuando el visitante lo toca. |
 | **Lo que aguanta su cultivo** | Un simulador: el visitante elige cultivo y etapa, mueve el pronóstico y ve el aviso exacto que le llegaría. Usa los mismos límites y textos que la app, y cada barra se pinta con las zonas de su cultivo. |
 | **Cómo funciona** | Los tres pasos del ciclo automático: marcar la parcela, la revisión cada 3 horas y el aviso. |
 | **Mis avisos** | Una copia de esa pantalla de la app que muestra qué avisos suenan y cuáles quedan guardados. |

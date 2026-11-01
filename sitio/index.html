@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="AgroClima Jalapa: el clima de su parcela, antes de que pase.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="img/panel.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="estilos.css?v=20261023">
+<link rel="stylesheet" href="estilos.css?v=20261101">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -28,6 +28,7 @@
 <!-- Íconos (Material Symbols) reutilizados con <use> -->
 <svg width="0" height="0" class="oculto" aria-hidden="true">
   <symbol id="i-bajar" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
   <symbol id="i-flecha" viewBox="0 0 24 24"><path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></symbol>
   <symbol id="i-nube" viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol>
@@ -104,7 +105,7 @@
           <a class="boton" href="https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk">
             <svg class="icono" aria-hidden="true"><use href="#i-bajar"/></svg>Descargar la app
           </a>
-          <a class="boton boton-suave" href="#cultivos">Pruebe un aviso<svg class="icono" aria-hidden="true"><use href="#i-flecha"/></svg></a>
+          <a class="boton boton-suave" href="#video"><svg class="icono" aria-hidden="true"><use href="#i-play"/></svg>Ver el video</a>
         </div>
       </div>
 
@@ -124,6 +125,30 @@
       <li><strong>3 h</strong><span>entre cada revisión, aunque la app esté cerrada</span></li>
       <li><strong>4</strong><span>cultivos: maíz, frijol, café y hortalizas</span></li>
     </ul>
+  </section>
+
+  <!-- ===================== Video ===================== -->
+  <section class="seccion video-sec" id="video" aria-labelledby="t-video">
+    <div class="ancho video-grid">
+      <div class="video-texto">
+        <p class="etiqueta">Video</p>
+        <h2 id="t-video">AgroClima Jalapa en video</h2>
+        <p>Conozca la app y el proyecto en este video.</p>
+        <a class="enlace" href="https://www.youtube.com/watch?v=B2JBSr4BpH0">Verlo en YouTube</a>
+        <p class="video-nota">El video se carga desde YouTube solo cuando usted lo reproduce.</p>
+      </div>
+      <div class="video-marco" id="video-marco">
+        <a class="video-portada" href="https://www.youtube.com/watch?v=B2JBSr4BpH0" data-video="B2JBSr4BpH0">
+          <span class="video-fondo" aria-hidden="true">
+            <img src="img/panel.webp" alt="" width="640" height="1289" loading="lazy" decoding="async">
+            <img src="img/avisos.webp" alt="" width="640" height="1289" loading="lazy" decoding="async">
+            <img src="img/mapa.webp" alt="" width="640" height="1289" loading="lazy" decoding="async">
+          </span>
+          <span class="video-boton"><svg aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="oculto-texto">Reproducir el video de AgroClima Jalapa</span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- ===================== Simulador ===================== -->
@@ -520,7 +545,7 @@
     <div class="pie-marca">
       <a class="marca marca-clara" href="#"><img src="img/logo.svg" alt="" width="36" height="36"><span>AgroClima <b>Jalapa</b></span></a>
       <p>El clima de su parcela, antes de que pase.</p>
-      <p class="pie-legal">Proyecto académico sin fines de lucro. Versión 1.1.0, 2026. Esta página no usa cookies ni cuenta visitas.</p>
+      <p class="pie-legal">Proyecto académico sin fines de lucro. Versión 1.1.0, 2026. Esta página no usa cookies ni cuenta visitas; el video de YouTube se carga solo si usted lo reproduce.</p>
     </div>
     <nav class="pie-col" aria-label="Pie">
       <p class="pie-titulo">La app</p>
@@ -546,6 +571,6 @@
   <div class="pie-gigante" aria-hidden="true"></div>
 </footer>
 
-<script src="app.js?v=20261023" defer></script>
+<script src="app.js?v=20261101" defer></script>
 </body>
 </html>

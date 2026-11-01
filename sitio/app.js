@@ -217,3 +217,19 @@ const quieto = matchMedia('(prefers-reduced-motion: reduce)');
     form.elements.text.value = nombre ? `Hola, ${nombre}. ${base}` : base;
   });
 })();
+
+// ---------- Video: el reproductor de YouTube se carga solo al tocar la portada ----------
+(() => {
+  const portada = document.querySelector('.video-portada[data-video]');
+  if (!portada) return;
+  portada.addEventListener('click', (e) => {
+    e.preventDefault();
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${portada.dataset.video}?autoplay=1&rel=0`;
+    iframe.title = 'Video de AgroClima Jalapa';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    portada.replaceWith(iframe);
+    iframe.focus();
+  });
+})();
