@@ -12,6 +12,7 @@ lo que aguanta su cultivo.
 
 [**Ver la página**](https://stevenquintanagt.github.io/Pag_Agroclima/) ·
 [Descargar la app (APK)](https://github.com/StevenQuintanaGT/Agroclima_Jalapa/releases/latest/download/AgroClima-Jalapa.apk) ·
+[Leer la tesis (PDF)](https://stevenquintanagt.github.io/Pag_Agroclima/tesis/tesis-agroclima-jalapa.pdf) ·
 [Repositorio de la app](https://github.com/StevenQuintanaGT/Agroclima_Jalapa)
 
 <br>
@@ -45,7 +46,7 @@ descargarla, y el **jurado y los docentes de la UMG**, que revisan el proyecto. 
 | **Mis avisos** | Una copia de esa pantalla de la app que muestra qué avisos suenan y cuáles quedan guardados. |
 | **Instalación y manuales** | Los cinco pasos para instalar el APK y los manuales de instalación, de usuario y técnico en PDF. |
 | **Preguntas comunes** | Las respuestas de la ayuda de la app, la privacidad y el glosario. |
-| **El proyecto** | La ficha de la tesis, las tecnologías y los enlaces al código. |
+| **El proyecto** | La ficha de la tesis, la tesis completa en PDF, las tecnologías y los enlaces al código. |
 
 ## Cómo está hecha
 
@@ -69,7 +70,8 @@ sitio/
 ├── app.js              simulador, Mis avisos, portada y animaciones
 ├── 404.html            página para direcciones que no existen
 ├── img/                logo, capturas de la app, código QR e imagen para compartir
-└── manuales/           manuales en PDF
+├── manuales/           manuales en PDF
+└── tesis/              la tesis en PDF
 .github/workflows/
 └── pagina.yml          publica sitio/ en GitHub Pages
 ```
@@ -103,8 +105,8 @@ Actions. También se puede lanzar a mano desde *Actions → Publicar página →
   de la app. Si cambian allá, hay que cambiarlos en `sitio/app.js` y en la tabla de `sitio/index.html`.
 - **Manuales**: reemplazar el PDF en `sitio/manuales/` con el mismo nombre y, si cambian, actualizar las páginas
   y el peso en `sitio/index.html`.
-- **Tesis**: cuando pueda publicarse, poner su enlace en la sección "El proyecto" de `sitio/index.html` (busque
-  el comentario `TESIS:`).
+- **Tesis**: para cambiarla, reemplazar `sitio/tesis/tesis-agroclima-jalapa.pdf` con el mismo nombre y, si cambia
+  el peso, actualizarlo en el botón "Leer la tesis" de `sitio/index.html`.
 
 </details>
 
